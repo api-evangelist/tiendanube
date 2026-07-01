@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Tiendanube
+providerId: tiendanube
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- E-commerce
+- Retail
+- Latin America
+- Storefront
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Tiendanube (Nuvemshop) enforces rate limits per app+store combination using a
+  leaky-bucket algorithm. Each app has a bucket per store that holds a fixed
+  number of request tokens and refills (leaks) at a steady rate. Every API call
+  consumes one token; when the bucket is empty, requests are rejected with HTTP
+  429 until the bucket refills. The current fill state is surfaced on every
+  response through rate-limit headers so clients can pace themselves. Exact
+  bucket size and leak rate are set by the platform and may differ by app and
+  plan; specific numeric values are not reconciled in this artifact.
+notes: >-
+  Read the x-rate-limit / bucket headers returned on each response to pace
+  requests, and back off on 429. Verify current bucket capacity and leak rate in
+  the Tiendanube API documentation during reconciliation; limits are scoped to
+  the app+store pair, not to the whole account.
+sources:
+- https://tiendanube.github.io/api-documentation/intro
+- https://tiendanube.github.io/api-documentation/
+responseCodes:
+  throttled: 429
+limits:
+- name: Leaky Bucket Capacity
+  scope: app-store
+  metric: requests
+  limit: see provider documentation
+  notes: Maximum number of request tokens a single app can hold for a single store at once (burst capacity).
+- name: Leak / Refill Rate
+  scope: app-store
+  metric: requests_per_second
+  limit: see provider documentation
+  notes: Steady rate at which the bucket refills; sets the sustained requests-per-second ceiling per app+store.
+- name: Per-App Per-Store Scope
+  scope: app-store
+  metric: requests
+  limit: independent per store
+  notes: Each installed store has its own bucket, so limits do not aggregate across a partner's installed base.
+responseHeaders:
+- name: Bucket / rate-limit headers
+  description: Responses expose the current bucket fill state and limit so clients can self-pace before hitting 429.
+policies:
+- name: Leaky Bucket
+  description: Requests draw from a per-app-per-store token bucket that refills at a fixed leak rate; empty bucket returns HTTP 429.
+- name: Backoff Strategy
+  description: Clients should read the rate-limit response headers, throttle to the leak rate, and apply exponential backoff with jitter on 429.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

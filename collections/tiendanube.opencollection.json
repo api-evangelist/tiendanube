@@ -1,0 +1,702 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tiendanube / Nuvemshop API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "Authentication",
+        "value": "bearer {{accessToken}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List products.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/products",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "The store ID."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of products in the store's catalog."
+        },
+        {
+          "info": {
+            "name": "Create a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/products",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "The store ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new product in the store's catalog."
+        },
+        {
+          "info": {
+            "name": "Get a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/products/:id",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "The store ID."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The product ID."
+              }
+            ]
+          },
+          "docs": "Retrieves a single product by ID."
+        },
+        {
+          "info": {
+            "name": "Update a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.tiendanube.com/v1/:store_id/products/:id",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "The store ID."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The product ID."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing product."
+        },
+        {
+          "info": {
+            "name": "Delete a product.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tiendanube.com/v1/:store_id/products/:id",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path",
+                "description": "The store ID."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The product ID."
+              }
+            ]
+          },
+          "docs": "Deletes a product."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Product Variants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List product variants.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/products/:product_id/variants",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the variants (SKUs) of a product."
+        },
+        {
+          "info": {
+            "name": "Create a variant.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/products/:product_id/variants",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a variant for a product."
+        },
+        {
+          "info": {
+            "name": "List product images.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/products/:product_id/images",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "product_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the images attached to a product."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List categories.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/categories",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the catalog categories."
+        },
+        {
+          "info": {
+            "name": "Create a category.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/categories",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a category."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List orders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/orders",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the store's orders."
+        },
+        {
+          "info": {
+            "name": "Get an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/orders/:id",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a single order by ID."
+        },
+        {
+          "info": {
+            "name": "Close an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/orders/:id/close",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Closes an order."
+        },
+        {
+          "info": {
+            "name": "Cancel an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/orders/:id/cancel",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels an order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List customers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/customers",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the store's customers."
+        },
+        {
+          "info": {
+            "name": "Create a customer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/customers",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a customer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Coupons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List coupons.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/coupons",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists discount coupons."
+        },
+        {
+          "info": {
+            "name": "Create a coupon.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/coupons",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a discount coupon."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhooks.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/webhooks",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists webhook subscriptions."
+        },
+        {
+          "info": {
+            "name": "Create a webhook.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/webhooks",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribes to a store event. Deliveries are HMAC-SHA256-signed HTTP POST callbacks."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scripts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scripts.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/scripts",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists storefront/checkout scripts registered by the app."
+        },
+        {
+          "info": {
+            "name": "Create a script.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/scripts",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a JavaScript script for the storefront or checkout."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Fulfillment Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List fulfillment orders.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/fulfillment-orders",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists fulfillment orders across the store."
+        },
+        {
+          "info": {
+            "name": "List fulfillment orders for an order.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/orders/:order_id/fulfillment-orders",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the fulfillment orders belonging to a specific order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payment & Shipping Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List payment providers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/payment_providers",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the store's payment providers."
+        },
+        {
+          "info": {
+            "name": "Register a payment provider.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/payment_providers",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a third-party payment provider for the store."
+        },
+        {
+          "info": {
+            "name": "List shipping carriers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tiendanube.com/v1/:store_id/shipping_carriers",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists the store's shipping carriers."
+        },
+        {
+          "info": {
+            "name": "Register a shipping carrier.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tiendanube.com/v1/:store_id/shipping_carriers",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a third-party shipping carrier for the store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

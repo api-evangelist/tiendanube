@@ -1,0 +1,104 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Tiendanube
+providerId: tiendanube
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- E-commerce
+- Retail
+- Latin America
+- Storefront
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Tiendanube (Nuvemshop) spend from an app partner's and a
+  merchant's perspective. The REST API is not directly metered - it is free to
+  call for approved partner apps and rate-limited per store. The costs that
+  actually accrue are (1) the merchant's monthly storefront subscription plan,
+  (2) transaction fees Tiendanube charges on sales (which vary by plan and
+  market), and (3) revenue share Tiendanube takes on paid partner apps and
+  in-app purchases. There is no per-API-call charge to model, so FinOps here
+  centers on subscription, transaction-fee, and app-revenue-share meters rather
+  than usage-priced API tokens.
+notes: >-
+  Subscription prices, transaction-fee percentages, and app revenue-share terms
+  are country- and plan-specific and change frequently; verify against the
+  regional Tiendanube/Nuvemshop pricing and Partners pages during
+  reconciliation.
+sources:
+- https://www.tiendanube.com/precios
+- https://www.nuvemshop.com.br/planos
+- https://partners.tiendanube.com/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Tiendanube
+serviceCategory: E-commerce Platform
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: Multiple (ARS, BRL, MXN, CLP, COP, USD)
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: Tiendanube / Nuvemshop
+  ServiceCategory: E-commerce Platform
+  ProviderName: Tiendanube
+  PublisherName: Tiendanube
+  InvoiceIssuerName: Tiendanube
+  BillingCurrency: Multiple
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: storefront_subscription
+  description: Monthly merchant storefront plan fee (Initial / Growth / Scale / Enterprise), priced per market.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - store
+  - plan
+  - country
+- name: transaction_fees
+  description: Percentage fee Tiendanube charges on sales made through the storefront; rate depends on plan and market.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - store
+  - plan
+  - country
+- name: app_revenue_share
+  description: Revenue share Tiendanube takes on paid partner apps and in-app purchases sold via the App Store.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - app
+  - store
+- name: api_requests
+  description: REST API calls consumed per app+store; not billed, tracked only for rate-limit and capacity planning.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - app
+  - store
+principles:
+- name: Visibility
+  description: Track storefront subscription invoices and transaction fees per store; monitor API request volume per app+store against the leaky-bucket limit.
+- name: Allocation
+  description: Map each merchant store and each partner app to its cost center; separate merchant subscription cost from partner app revenue share.
+- name: Optimization
+  description: Pick the storefront plan whose transaction-fee tier fits sales volume; batch and cache API reads to stay within the free rate limit and avoid 429 retries.
+- name: Accountability
+  description: Assign owners per store and per app; review subscription, transaction-fee, and revenue-share lines monthly against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

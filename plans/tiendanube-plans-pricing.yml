@@ -1,0 +1,166 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Tiendanube
+providerId: tiendanube
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- E-commerce
+- Retail
+- Latin America
+- Storefront
+- Plans
+description: >-
+  Important distinction: the Tiendanube (Nuvemshop) REST API is not itself sold
+  as a metered product. The API is a free integration surface for approved app
+  partners - a partner builds an app, requests OAuth scopes, and calls the API
+  against the stores that install the app. Merchants pay Tiendanube for a
+  storefront subscription (the SaaS plans below), which gate storefront
+  features, not raw API access. App developers may in turn monetize their own
+  apps through the Tiendanube Partners program and App Store (revenue share on
+  paid apps and in-app purchases). The tiers listed here are the merchant-facing
+  storefront subscription plans; local pricing and plan names vary by country
+  (Argentina, Brazil, Mexico, Chile, Colombia, and others) and currency.
+notes: >-
+  Storefront subscription prices are country- and currency-specific and change
+  frequently; the entries below capture the plan structure, not fixed prices.
+  Verify current local pricing on the regional Tiendanube/Nuvemshop pricing
+  page. The API itself is included with any paid storefront plan and is free for
+  partner apps to call.
+sources:
+- https://www.tiendanube.com/precios
+- https://www.nuvemshop.com.br/planos
+- https://tiendanube.github.io/api-documentation/
+- https://partners.tiendanube.com/
+plans:
+- id: tiendanube-api-partner
+  name: API / App Partner Access
+  type: usage
+  description: >-
+    Free programmatic access to the REST API for approved app partners via
+    OAuth 2.0. No per-call fee for the API; partners monetize their own apps
+    through the App Store (revenue share applies to paid apps).
+  entries:
+  - label: REST API Calls
+    name: api_calls
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: latam
+    unit: 1
+    price: free for partner apps (rate-limited per store)
+    userMultiplied: false
+  - label: Partner App Revenue Share
+    name: app_revenue_share
+    type: usage
+    metric: transaction
+    limit: -1
+    timeFrame: month
+    geo: latam
+    unit: 1
+    price: revenue share on paid apps / in-app purchases (see Partners program)
+    userMultiplied: false
+  elements:
+  - name: Products
+  - name: Orders
+  - name: Customers
+  - name: Categories
+  - name: Coupons
+  - name: Webhooks
+  - name: Scripts
+  - name: Fulfillment Orders
+  - name: Payment / Shipping Providers
+- id: tiendanube-initial
+  name: Initial / Starter Storefront Plan
+  type: subscription
+  description: >-
+    Entry-level merchant storefront subscription for new sellers. Includes API
+    access. Local price and plan name vary by market.
+  entries:
+  - label: Monthly Subscription
+    name: initial_monthly
+    type: subscription
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: latam
+    unit: 1
+    price: see regional pricing page
+    userMultiplied: false
+  elements:
+  - name: Online Store
+  - name: Product Catalog
+  - name: API Access
+- id: tiendanube-growth
+  name: Growth / Business Storefront Plan
+  type: subscription
+  description: >-
+    Mid-tier merchant storefront subscription with lower transaction fees, more
+    features, and marketing tools. Includes API access.
+  entries:
+  - label: Monthly Subscription
+    name: growth_monthly
+    type: subscription
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: latam
+    unit: 1
+    price: see regional pricing page
+    userMultiplied: false
+  elements:
+  - name: Online Store
+  - name: Reduced Transaction Fees
+  - name: Marketing Tools
+  - name: API Access
+- id: tiendanube-scale
+  name: Scale / Evolution Storefront Plan
+  type: subscription
+  description: >-
+    Higher-tier merchant storefront subscription for established stores with the
+    lowest transaction fees and advanced features. Includes API access.
+  entries:
+  - label: Monthly Subscription
+    name: scale_monthly
+    type: subscription
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: latam
+    unit: 1
+    price: see regional pricing page
+    userMultiplied: false
+  elements:
+  - name: Online Store
+  - name: Lowest Transaction Fees
+  - name: Advanced Features
+  - name: Priority Support
+  - name: API Access
+- id: tiendanube-nuvemshop-next
+  name: Nuvemshop Next / Enterprise
+  type: enterprise
+  description: >-
+    High-volume / enterprise offering (branded Nuvemshop Next in Brazil) for
+    large merchants, with custom commercial terms, dedicated support, and full
+    API access. Contact Tiendanube sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: latam
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Commercial Terms
+  - name: Dedicated Support
+  - name: Full API Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

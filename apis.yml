@@ -1,0 +1,211 @@
+aid: tiendanube
+url: https://raw.githubusercontent.com/api-evangelist/tiendanube/refs/heads/main/apis.yml
+name: Tiendanube
+kind: company
+description: Tiendanube (branded Nuvemshop in Brazil) is the leading e-commerce
+  platform for small and medium-sized businesses across Latin America. Its REST
+  API lets partner applications manage a merchant's store data - products,
+  variants, categories, orders, customers, coupons, webhooks, scripts,
+  fulfillment orders, and payment/shipping providers - using OAuth 2.0 and a
+  per-store authentication token.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- E-commerce
+- Retail
+- Latin America
+- Storefront
+- Products
+- Orders
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: tiendanube:tiendanube-products-api
+  name: Tiendanube Products API
+  tags:
+  - Products
+  - Catalog
+  - Inventory
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/product
+    type: Documentation
+  - url: https://tiendanube.github.io/api-documentation/resources/product
+    type: APIReference
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Create, read, update, and delete products in a merchant's catalog,
+    including titles, descriptions, SEO fields, pricing, brand, and publish state.
+- aid: tiendanube:tiendanube-product-variants-api
+  name: Tiendanube Product Variants API
+  tags:
+  - Variants
+  - SKU
+  - Images
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/product_variant
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/product_variant
+    type: Documentation
+  - url: https://tiendanube.github.io/api-documentation/resources/product_image
+    type: APIReference
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Manage per-product variants (SKUs) with price, promotional price,
+    stock, weight, dimensions, and variant-level values, plus attach and order
+    product images.
+- aid: tiendanube:tiendanube-categories-api
+  name: Tiendanube Categories API
+  tags:
+  - Categories
+  - Taxonomy
+  - Merchandising
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/category
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/category
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Organize a storefront's catalog into a hierarchical tree of
+    categories with parent/child relationships, subcategories, and localized
+    names and descriptions.
+- aid: tiendanube:tiendanube-orders-api
+  name: Tiendanube Orders API
+  tags:
+  - Orders
+  - Checkout
+  - Transactions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/order
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/order
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: List and retrieve orders with line items, customer, shipping and
+    billing addresses, and payment status; open, close, cancel, and pack orders.
+- aid: tiendanube:tiendanube-customers-api
+  name: Tiendanube Customers API
+  tags:
+  - Customers
+  - CRM
+  - Contacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/customer
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/customer
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Create and manage store customers, their contact details, default
+    addresses, and order history for CRM and marketing integrations.
+- aid: tiendanube:tiendanube-coupons-api
+  name: Tiendanube Coupons API
+  tags:
+  - Coupons
+  - Discounts
+  - Promotions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/coupon
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/coupon
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Create percentage, fixed-amount, absolute, and shipping discount
+    coupons with usage limits, validity windows, and minimum-price conditions.
+- aid: tiendanube:tiendanube-webhooks-api
+  name: Tiendanube Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/webhook
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/webhook
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Subscribe to store events (order/created, product/updated,
+    app/uninstalled, and more) delivered as HMAC-signed POST callbacks to an
+    app's configured URL.
+- aid: tiendanube:tiendanube-scripts-api
+  name: Tiendanube Scripts API
+  tags:
+  - Scripts
+  - Storefront
+  - Injection
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/script
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/script
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Register JavaScript scripts that an app injects into the storefront
+    or checkout, scoped by event and location, for analytics, chat, and
+    conversion tooling.
+- aid: tiendanube:tiendanube-fulfillment-orders-api
+  name: Tiendanube Fulfillment Orders API
+  tags:
+  - Fulfillment
+  - Shipping
+  - Logistics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/fulfillment_order
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/fulfillment_order
+    type: Documentation
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Manage the fulfillment of order line items - assignments, tracking,
+    and status - for logistics and 3PL integrations, alongside draft orders.
+- aid: tiendanube:tiendanube-payment-shipping-providers-api
+  name: Tiendanube Payment and Shipping Providers API
+  tags:
+  - Payment Providers
+  - Shipping Carriers
+  - Checkout
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://tiendanube.github.io/api-documentation/resources/payment_provider
+  baseURL: https://api.tiendanube.com/v1/{store_id}
+  properties:
+  - url: https://tiendanube.github.io/api-documentation/resources/payment_provider
+    type: Documentation
+  - url: https://tiendanube.github.io/api-documentation/resources/shipping_carrier
+    type: APIReference
+  - url: openapi/tiendanube-openapi.yml
+    type: OpenAPI
+  description: Register and manage third-party payment providers and shipping
+    carriers - including checkout options, rates, and transactions - so apps can
+    offer native payment and shipping at checkout.
+common:
+- type: GitHubOrganization
+  url: https://github.com/TiendaNube
+- type: LinkedIn
+  url: https://www.linkedin.com/company/tiendanube
+- type: Website
+  url: https://www.tiendanube.com/
+- type: Documentation
+  url: https://tiendanube.github.io/api-documentation/
+- type: Plans
+  url: plans/tiendanube-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/tiendanube-rate-limits.yml
+- type: FinOps
+  url: finops/tiendanube-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

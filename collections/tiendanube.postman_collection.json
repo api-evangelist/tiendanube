@@ -1,0 +1,583 @@
+{
+  "info": {
+    "_postman_id": "b7f3c2a1-4d6e-4f2b-9a1c-2e8d5f0a1b23",
+    "name": "Tiendanube / Nuvemshop API",
+    "description": "Representative Postman collection for the Tiendanube (Nuvemshop) REST API. All requests are scoped to a store via the {{store_id}} path variable, authenticated with an OAuth 2.0 access token sent as the Authentication header, and require a descriptive User-Agent header.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "bearer {{accessToken}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.tiendanube.com/v1"
+    },
+    {
+      "key": "store_id",
+      "value": ""
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "List products.",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products"]
+            },
+            "description": "Returns a paginated list of products in the store's catalog."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a product.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"es\": \"Remera\",\n    \"pt\": \"Camiseta\"\n  },\n  \"variants\": [\n    {\n      \"price\": \"199.90\",\n      \"stock\": 10,\n      \"sku\": \"REM-001\"\n    }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products"]
+            },
+            "description": "Creates a new product in the store's catalog."
+          },
+          "response": []
+        },
+        {
+          "name": "Get a product.",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The product ID." }]
+            },
+            "description": "Retrieves a single product by ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Update a product.",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"published\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The product ID." }]
+            },
+            "description": "Updates an existing product."
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a product.",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products", ":id"],
+              "variable": [{ "key": "id", "value": "", "description": "The product ID." }]
+            },
+            "description": "Deletes a product."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Product Variants",
+      "item": [
+        {
+          "name": "List product variants.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products", ":product_id", "variants"],
+              "variable": [{ "key": "product_id", "value": "" }]
+            },
+            "description": "Lists the variants (SKUs) of a product."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a variant.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"249.90\",\n  \"stock\": 5,\n  \"sku\": \"REM-002\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/variants",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products", ":product_id", "variants"],
+              "variable": [{ "key": "product_id", "value": "" }]
+            },
+            "description": "Creates a variant for a product."
+          },
+          "response": []
+        },
+        {
+          "name": "List product images.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/products/:product_id/images",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "products", ":product_id", "images"],
+              "variable": [{ "key": "product_id", "value": "" }]
+            },
+            "description": "Lists the images attached to a product."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "List categories.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "categories"]
+            },
+            "description": "Lists the catalog categories."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a category.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"es\": \"Ropa\",\n    \"pt\": \"Roupas\"\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/categories",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "categories"]
+            },
+            "description": "Creates a category."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "List orders.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "orders"]
+            },
+            "description": "Lists the store's orders."
+          },
+          "response": []
+        },
+        {
+          "name": "Get an order.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/orders/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "orders", ":id"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "description": "Retrieves a single order by ID."
+          },
+          "response": []
+        },
+        {
+          "name": "Close an order.",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/orders/:id/close",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "orders", ":id", "close"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "description": "Closes an order."
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel an order.",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/orders/:id/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "orders", ":id", "cancel"],
+              "variable": [{ "key": "id", "value": "" }]
+            },
+            "description": "Cancels an order."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List customers.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/customers",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "customers"]
+            },
+            "description": "Lists the store's customers."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a customer.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ada Lovelace\",\n  \"email\": \"ada@example.com\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/customers",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "customers"]
+            },
+            "description": "Creates a customer."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Coupons",
+      "item": [
+        {
+          "name": "List coupons.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/coupons",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "coupons"]
+            },
+            "description": "Lists discount coupons."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a coupon.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"WELCOME10\",\n  \"type\": \"percentage\",\n  \"value\": \"10.0\",\n  \"max_uses\": 100\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/coupons",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "coupons"]
+            },
+            "description": "Creates a discount coupon."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhooks.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/webhooks",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "webhooks"]
+            },
+            "description": "Lists webhook subscriptions."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a webhook.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://myapp.example.com/webhooks/tiendanube\",\n  \"event\": \"order/created\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/webhooks",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "webhooks"]
+            },
+            "description": "Subscribes to a store event. Deliveries are HMAC-SHA256-signed HTTP POST callbacks."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Scripts",
+      "item": [
+        {
+          "name": "List scripts.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/scripts",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "scripts"]
+            },
+            "description": "Lists storefront/checkout scripts registered by the app."
+          },
+          "response": []
+        },
+        {
+          "name": "Create a script.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"src\": \"https://myapp.example.com/widget.js\",\n  \"event\": \"onload\",\n  \"where\": \"store\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/scripts",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "scripts"]
+            },
+            "description": "Registers a JavaScript script for the storefront or checkout."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Fulfillment Orders",
+      "item": [
+        {
+          "name": "List fulfillment orders.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/fulfillment-orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "fulfillment-orders"]
+            },
+            "description": "Lists fulfillment orders across the store."
+          },
+          "response": []
+        },
+        {
+          "name": "List fulfillment orders for an order.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/orders/:order_id/fulfillment-orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "orders", ":order_id", "fulfillment-orders"],
+              "variable": [{ "key": "order_id", "value": "" }]
+            },
+            "description": "Lists the fulfillment orders belonging to a specific order."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payment & Shipping Providers",
+      "item": [
+        {
+          "name": "List payment providers.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/payment_providers",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "payment_providers"]
+            },
+            "description": "Lists the store's payment providers."
+          },
+          "response": []
+        },
+        {
+          "name": "Register a payment provider.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Payments\",\n  \"public_name\": \"Pay with My Payments\",\n  \"supported_currencies\": [\"ARS\", \"BRL\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/payment_providers",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "payment_providers"]
+            },
+            "description": "Registers a third-party payment provider for the store."
+          },
+          "response": []
+        },
+        {
+          "name": "List shipping carriers.",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "User-Agent", "value": "MyApp (contact@example.com)" }],
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/shipping_carriers",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "shipping_carriers"]
+            },
+            "description": "Lists the store's shipping carriers."
+          },
+          "response": []
+        },
+        {
+          "name": "Register a shipping carrier.",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "User-Agent", "value": "MyApp (contact@example.com)" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"My Carrier\",\n  \"callback_url\": \"https://myapp.example.com/rates\",\n  \"types\": \"ship,pickup\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/{{store_id}}/shipping_carriers",
+              "host": ["{{baseUrl}}"],
+              "path": ["{{store_id}}", "shipping_carriers"]
+            },
+            "description": "Registers a third-party shipping carrier for the store."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1223 @@
+openapi: 3.0.3
+info:
+  title: Tiendanube / Nuvemshop API
+  description: >-
+    Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for
+    app partners. All requests are scoped to a single store via the {store_id}
+    path segment, authenticated with an OAuth 2.0 access token sent in the
+    Authentication header, and MUST include a descriptive User-Agent header
+    identifying the app. The Brazil deployment mirrors this API at
+    https://api.nuvemshop.com.br/v1/{store_id}.
+  termsOfService: https://www.tiendanube.com/terminos-de-uso
+  contact:
+    name: Tiendanube Developers
+    url: https://tiendanube.github.io/api-documentation/
+  version: '1.0'
+servers:
+  - url: https://api.tiendanube.com/v1/{store_id}
+    description: Tiendanube (Spanish-speaking Latin America)
+    variables:
+      store_id:
+        default: '0'
+        description: Numeric ID of the store the app is operating on.
+  - url: https://api.nuvemshop.com.br/v1/{store_id}
+    description: Nuvemshop (Brazil)
+    variables:
+      store_id:
+        default: '0'
+        description: Numeric ID of the store the app is operating on.
+security:
+  - AuthenticationToken: []
+tags:
+  - name: Products
+  - name: Product Variants
+  - name: Product Images
+  - name: Categories
+  - name: Orders
+  - name: Customers
+  - name: Coupons
+  - name: Webhooks
+  - name: Scripts
+  - name: Fulfillment Orders
+  - name: Payment Providers
+  - name: Shipping Carriers
+paths:
+  /products:
+    get:
+      operationId: listProducts
+      tags: [Products]
+      summary: List products
+      description: Returns a paginated list of products in the store's catalog.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - name: q
+          in: query
+          description: Full-text search across product names and SKUs.
+          schema:
+            type: string
+        - name: category_id
+          in: query
+          description: Filter products belonging to a category.
+          schema:
+            type: integer
+        - name: published
+          in: query
+          schema:
+            type: boolean
+        - name: updated_at_min
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: A list of products.
+          headers:
+            x-total-count:
+              schema:
+                type: integer
+              description: Total number of products matching the query.
+            Link:
+              schema:
+                type: string
+              description: RFC 5988 pagination links (rel="next", rel="prev").
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+    post:
+      operationId: createProduct
+      tags: [Products]
+      summary: Create a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '201':
+          description: Product created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+  /products/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getProduct
+      tags: [Products]
+      summary: Get a product
+      responses:
+        '200':
+          description: The product.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateProduct
+      tags: [Products]
+      summary: Update a product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductInput'
+      responses:
+        '200':
+          description: Product updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+    delete:
+      operationId: deleteProduct
+      tags: [Products]
+      summary: Delete a product
+      responses:
+        '200':
+          description: Product deleted.
+  /products/{product_id}/variants:
+    parameters:
+      - name: product_id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      operationId: listVariants
+      tags: [Product Variants]
+      summary: List variants of a product
+      responses:
+        '200':
+          description: A list of variants.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Variant'
+    post:
+      operationId: createVariant
+      tags: [Product Variants]
+      summary: Create a variant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariantInput'
+      responses:
+        '201':
+          description: Variant created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variant'
+  /products/{product_id}/variants/{id}:
+    parameters:
+      - name: product_id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getVariant
+      tags: [Product Variants]
+      summary: Get a variant
+      responses:
+        '200':
+          description: The variant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variant'
+    put:
+      operationId: updateVariant
+      tags: [Product Variants]
+      summary: Update a variant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VariantInput'
+      responses:
+        '200':
+          description: Variant updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Variant'
+    delete:
+      operationId: deleteVariant
+      tags: [Product Variants]
+      summary: Delete a variant
+      responses:
+        '200':
+          description: Variant deleted.
+  /products/{product_id}/images:
+    parameters:
+      - name: product_id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      operationId: listProductImages
+      tags: [Product Images]
+      summary: List product images
+      responses:
+        '200':
+          description: A list of images.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductImage'
+    post:
+      operationId: createProductImage
+      tags: [Product Images]
+      summary: Add a product image
+      description: Attach an image by src URL or base64 attachment, with position.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductImageInput'
+      responses:
+        '201':
+          description: Image added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductImage'
+  /categories:
+    get:
+      operationId: listCategories
+      tags: [Categories]
+      summary: List categories
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A list of categories.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      operationId: createCategory
+      tags: [Categories]
+      summary: Create a category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '201':
+          description: Category created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+  /categories/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCategory
+      tags: [Categories]
+      summary: Get a category
+      responses:
+        '200':
+          description: The category.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+    put:
+      operationId: updateCategory
+      tags: [Categories]
+      summary: Update a category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '200':
+          description: Category updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+    delete:
+      operationId: deleteCategory
+      tags: [Categories]
+      summary: Delete a category
+      responses:
+        '200':
+          description: Category deleted.
+  /orders:
+    get:
+      operationId: listOrders
+      tags: [Orders]
+      summary: List orders
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [any, open, closed, cancelled]
+        - name: payment_status
+          in: query
+          schema:
+            type: string
+            enum: [any, pending, authorized, paid, abandoned, refunded, voided]
+        - name: created_at_min
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: A list of orders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+  /orders/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getOrder
+      tags: [Orders]
+      summary: Get an order
+      responses:
+        '200':
+          description: The order.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /orders/{id}/close:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    post:
+      operationId: closeOrder
+      tags: [Orders]
+      summary: Close an order
+      responses:
+        '200':
+          description: Order closed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /orders/{id}/cancel:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    post:
+      operationId: cancelOrder
+      tags: [Orders]
+      summary: Cancel an order
+      responses:
+        '200':
+          description: Order cancelled.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /customers:
+    get:
+      operationId: listCustomers
+      tags: [Customers]
+      summary: List customers
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - name: q
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of customers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      operationId: createCustomer
+      tags: [Customers]
+      summary: Create a customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerInput'
+      responses:
+        '201':
+          description: Customer created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCustomer
+      tags: [Customers]
+      summary: Get a customer
+      responses:
+        '200':
+          description: The customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /coupons:
+    get:
+      operationId: listCoupons
+      tags: [Coupons]
+      summary: List coupons
+      responses:
+        '200':
+          description: A list of coupons.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Coupon'
+    post:
+      operationId: createCoupon
+      tags: [Coupons]
+      summary: Create a coupon
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CouponInput'
+      responses:
+        '201':
+          description: Coupon created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Coupon'
+  /coupons/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    delete:
+      operationId: deleteCoupon
+      tags: [Coupons]
+      summary: Delete a coupon
+      responses:
+        '200':
+          description: Coupon deleted.
+  /webhooks:
+    get:
+      operationId: listWebhooks
+      tags: [Webhooks]
+      summary: List webhooks
+      responses:
+        '200':
+          description: A list of webhook subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags: [Webhooks]
+      summary: Create a webhook
+      description: >-
+        Subscribe to a store event. Deliveries are HTTP POST callbacks signed
+        with HMAC-SHA256 in the x-linkedstore-hmac-sha256 header.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '201':
+          description: Webhook created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+  /webhooks/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    delete:
+      operationId: deleteWebhook
+      tags: [Webhooks]
+      summary: Delete a webhook
+      responses:
+        '200':
+          description: Webhook deleted.
+  /scripts:
+    get:
+      operationId: listScripts
+      tags: [Scripts]
+      summary: List scripts
+      responses:
+        '200':
+          description: A list of scripts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Script'
+    post:
+      operationId: createScript
+      tags: [Scripts]
+      summary: Create a script
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScriptInput'
+      responses:
+        '201':
+          description: Script created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Script'
+  /fulfillment-orders:
+    get:
+      operationId: listFulfillmentOrders
+      tags: [Fulfillment Orders]
+      summary: List fulfillment orders
+      responses:
+        '200':
+          description: A list of fulfillment orders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FulfillmentOrder'
+  /orders/{order_id}/fulfillment-orders:
+    parameters:
+      - name: order_id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      operationId: listOrderFulfillmentOrders
+      tags: [Fulfillment Orders]
+      summary: List fulfillment orders for an order
+      responses:
+        '200':
+          description: A list of fulfillment orders for the order.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FulfillmentOrder'
+  /payment_providers:
+    get:
+      operationId: listPaymentProviders
+      tags: [Payment Providers]
+      summary: List payment providers
+      responses:
+        '200':
+          description: A list of payment providers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentProvider'
+    post:
+      operationId: createPaymentProvider
+      tags: [Payment Providers]
+      summary: Register a payment provider
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentProvider'
+      responses:
+        '201':
+          description: Payment provider registered.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentProvider'
+  /shipping_carriers:
+    get:
+      operationId: listShippingCarriers
+      tags: [Shipping Carriers]
+      summary: List shipping carriers
+      responses:
+        '200':
+          description: A list of shipping carriers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingCarrier'
+    post:
+      operationId: createShippingCarrier
+      tags: [Shipping Carriers]
+      summary: Register a shipping carrier
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShippingCarrier'
+      responses:
+        '201':
+          description: Shipping carrier registered.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ShippingCarrier'
+components:
+  securitySchemes:
+    AuthenticationToken:
+      type: apiKey
+      in: header
+      name: Authentication
+      description: >-
+        OAuth 2.0 access token obtained via the authorization-code flow, sent as
+        "Authentication: bearer {access_token}". A descriptive User-Agent header
+        is also required on every request.
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    LocalizedString:
+      type: object
+      description: >-
+        A map of locale code to translated string, e.g. keys "es" and "pt"
+        mapping to localized values.
+      additionalProperties:
+        type: string
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        handle:
+          $ref: '#/components/schemas/LocalizedString'
+        brand:
+          type: string
+          nullable: true
+        published:
+          type: boolean
+        free_shipping:
+          type: boolean
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/Variant'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductImage'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ProductInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        brand:
+          type: string
+        published:
+          type: boolean
+        free_shipping:
+          type: boolean
+        categories:
+          type: array
+          items:
+            type: integer
+        variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariantInput'
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock_management:
+          type: boolean
+        stock:
+          type: integer
+          nullable: true
+        weight:
+          $ref: '#/components/schemas/Money'
+        width:
+          $ref: '#/components/schemas/Money'
+        height:
+          $ref: '#/components/schemas/Money'
+        depth:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type: string
+          nullable: true
+        barcode:
+          type: string
+          nullable: true
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    VariantInput:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock:
+          type: integer
+        weight:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        src:
+          type: string
+          format: uri
+        position:
+          type: integer
+        alt:
+          type: array
+          items:
+            type: string
+    ProductImageInput:
+      type: object
+      properties:
+        src:
+          type: string
+          format: uri
+          description: URL of the image to import.
+        attachment:
+          type: string
+          description: Base64-encoded image data (alternative to src).
+        filename:
+          type: string
+        position:
+          type: integer
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        handle:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type: integer
+          nullable: true
+        subcategories:
+          type: array
+          items:
+            type: integer
+        created_at:
+          type: string
+          format: date-time
+    CategoryInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type: integer
+          nullable: true
+    Order:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: integer
+        token:
+          type: string
+        status:
+          type: string
+          enum: [open, closed, cancelled]
+        payment_status:
+          type: string
+          enum: [pending, authorized, paid, abandoned, refunded, voided]
+        shipping_status:
+          type: string
+          enum: [unpacked, unfulfilled, fulfilled]
+        currency:
+          type: string
+        total:
+          $ref: '#/components/schemas/Money'
+        subtotal:
+          $ref: '#/components/schemas/Money'
+        customer:
+          $ref: '#/components/schemas/Customer'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderLineItem'
+        shipping_address:
+          $ref: '#/components/schemas/Address'
+        billing_address:
+          $ref: '#/components/schemas/Address'
+        created_at:
+          type: string
+          format: date-time
+    OrderLineItem:
+      type: object
+      properties:
+        product_id:
+          type: integer
+        variant_id:
+          type: integer
+        name:
+          type: string
+        price:
+          $ref: '#/components/schemas/Money'
+        quantity:
+          type: integer
+        sku:
+          type: string
+          nullable: true
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        identification:
+          type: string
+          nullable: true
+        total_spent:
+          $ref: '#/components/schemas/Money'
+        total_spent_currency:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        default_address:
+          $ref: '#/components/schemas/Address'
+        created_at:
+          type: string
+          format: date-time
+    CustomerInput:
+      type: object
+      required: [name, email]
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        identification:
+          type: string
+    Address:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        number:
+          type: string
+        floor:
+          type: string
+          nullable: true
+        locality:
+          type: string
+          nullable: true
+        city:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        phone:
+          type: string
+          nullable: true
+    Coupon:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        type:
+          type: string
+          enum: [percentage, absolute, shipping]
+        value:
+          $ref: '#/components/schemas/Money'
+        valid:
+          type: boolean
+        max_uses:
+          type: integer
+          nullable: true
+        used:
+          type: integer
+        min_price:
+          $ref: '#/components/schemas/Money'
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+          nullable: true
+    CouponInput:
+      type: object
+      required: [code, type, value]
+      properties:
+        code:
+          type: string
+        type:
+          type: string
+          enum: [percentage, absolute, shipping]
+        value:
+          $ref: '#/components/schemas/Money'
+        max_uses:
+          type: integer
+        min_price:
+          $ref: '#/components/schemas/Money'
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: integer
+        url:
+          type: string
+          format: uri
+        event:
+          type: string
+          example: order/created
+        created_at:
+          type: string
+          format: date-time
+    WebhookInput:
+      type: object
+      required: [url, event]
+      properties:
+        url:
+          type: string
+          format: uri
+        event:
+          type: string
+          description: >-
+            Event to subscribe to, e.g. order/created, order/paid,
+            product/created, product/updated, app/uninstalled,
+            customer/created.
+    Script:
+      type: object
+      properties:
+        id:
+          type: integer
+        src:
+          type: string
+          format: uri
+        event:
+          type: string
+          enum: [onload]
+        where:
+          type: string
+          enum: [store, checkout, all]
+        created_at:
+          type: string
+          format: date-time
+    ScriptInput:
+      type: object
+      required: [src, event, where]
+      properties:
+        src:
+          type: string
+          format: uri
+        event:
+          type: string
+          enum: [onload]
+        where:
+          type: string
+          enum: [store, checkout, all]
+    FulfillmentOrder:
+      type: object
+      properties:
+        id:
+          type: string
+        order_id:
+          type: integer
+        status:
+          type: string
+          enum: [open, in_progress, fulfilled, cancelled]
+        assigned_location:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+        line_items:
+          type: array
+          items:
+            type: object
+            properties:
+              product_variant_id:
+                type: integer
+              quantity:
+                type: integer
+        tracking_info:
+          type: object
+          properties:
+            code:
+              type: string
+            url:
+              type: string
+              format: uri
+    PaymentProvider:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        public_name:
+          type: string
+        description:
+          type: string
+        logo_urls:
+          type: object
+          additionalProperties:
+            type: string
+        checkout_js_url:
+          type: string
+          format: uri
+        supported_currencies:
+          type: array
+          items:
+            type: string
+        supported_payment_methods:
+          type: array
+          items:
+            type: object
+            properties:
+              payment_method_type:
+                type: string
+              payment_methods:
+                type: array
+                items:
+                  type: string
+    ShippingCarrier:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        callback_url:
+          type: string
+          format: uri
+        types:
+          type: string
+          example: ship,pickup
+        active:
+          type: boolean
+        options:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+              additional_days:
+                type: integer
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
