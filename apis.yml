@@ -192,6 +192,12 @@ apis:
     carriers - including checkout options, rates, and transactions - so apps can
     offer native payment and shipping at checkout.
 common:
+- type: VulnerabilityDisclosure
+  url: security/tiendanube-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/tiendanube-domain-security.yml
+- type: Authentication
+  url: authentication/tiendanube-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/TiendaNube
 - type: LinkedIn
@@ -206,6 +212,8 @@ common:
   url: rate-limits/tiendanube-rate-limits.yml
 - type: FinOps
   url: finops/tiendanube-finops.yml
+- url: https://www.tiendanube.com/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

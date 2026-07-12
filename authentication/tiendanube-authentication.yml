@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tiendanube-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: AuthenticationToken
+  type: apiKey
+  in: header
+  parameter: Authentication
+  description: 'OAuth 2.0 access token obtained via the authorization-code flow, sent as "Authentication:
+    bearer {access_token}". A descriptive User-Agent header is also required on every request.'
+  sources:
+  - openapi/tiendanube-openapi.yml
