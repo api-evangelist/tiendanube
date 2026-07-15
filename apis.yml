@@ -192,6 +192,8 @@ apis:
     carriers - including checkout options, rates, and transactions - so apps can
     offer native payment and shipping at checkout.
 common:
+- type: AgenticAccess
+  url: agentic-access/tiendanube-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/tiendanube-vulnerability-disclosure.yml
 - type: DomainSecurity
