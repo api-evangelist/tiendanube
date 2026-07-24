@@ -1,0 +1,170 @@
+openapi: 3.0.3
+info:
+  title: Tiendanube / Nuvemshop Categories API
+  description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
+  termsOfService: https://www.tiendanube.com/terminos-de-uso
+  contact:
+    name: Tiendanube Developers
+    url: https://tiendanube.github.io/api-documentation/
+  version: '1.0'
+servers:
+- url: https://api.tiendanube.com/v1/{store_id}
+  description: Tiendanube (Spanish-speaking Latin America)
+  variables:
+    store_id:
+      default: '0'
+      description: Numeric ID of the store the app is operating on.
+- url: https://api.nuvemshop.com.br/v1/{store_id}
+  description: Nuvemshop (Brazil)
+  variables:
+    store_id:
+      default: '0'
+      description: Numeric ID of the store the app is operating on.
+security:
+- AuthenticationToken: []
+tags:
+- name: Categories
+paths:
+  /categories:
+    get:
+      operationId: listCategories
+      tags:
+      - Categories
+      summary: List categories
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A list of categories.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      operationId: createCategory
+      tags:
+      - Categories
+      summary: Create a category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '201':
+          description: Category created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+  /categories/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCategory
+      tags:
+      - Categories
+      summary: Get a category
+      responses:
+        '200':
+          description: The category.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+    put:
+      operationId: updateCategory
+      tags:
+      - Categories
+      summary: Update a category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '200':
+          description: Category updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+    delete:
+      operationId: deleteCategory
+      tags:
+      - Categories
+      summary: Delete a category
+      responses:
+        '200':
+          description: Category deleted.
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        handle:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type: integer
+          nullable: true
+        subcategories:
+          type: array
+          items:
+            type: integer
+        created_at:
+          type: string
+          format: date-time
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
+    CategoryInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type: integer
+          nullable: true
+  securitySchemes:
+    AuthenticationToken:
+      type: apiKey
+      in: header
+      name: Authentication
+      description: 'OAuth 2.0 access token obtained via the authorization-code flow, sent as "Authentication: bearer {access_token}". A descriptive User-Agent header is also required on every request.'

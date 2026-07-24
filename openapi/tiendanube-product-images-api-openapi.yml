@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: Tiendanube / Nuvemshop Categories Product Images API
+  description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
+  termsOfService: https://www.tiendanube.com/terminos-de-uso
+  contact:
+    name: Tiendanube Developers
+    url: https://tiendanube.github.io/api-documentation/
+  version: '1.0'
+servers:
+- url: https://api.tiendanube.com/v1/{store_id}
+  description: Tiendanube (Spanish-speaking Latin America)
+  variables:
+    store_id:
+      default: '0'
+      description: Numeric ID of the store the app is operating on.
+- url: https://api.nuvemshop.com.br/v1/{store_id}
+  description: Nuvemshop (Brazil)
+  variables:
+    store_id:
+      default: '0'
+      description: Numeric ID of the store the app is operating on.
+security:
+- AuthenticationToken: []
+tags:
+- name: Product Images
+paths:
+  /products/{product_id}/images:
+    parameters:
+    - name: product_id
+      in: path
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: listProductImages
+      tags:
+      - Product Images
+      summary: List product images
+      responses:
+        '200':
+          description: A list of images.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductImage'
+    post:
+      operationId: createProductImage
+      tags:
+      - Product Images
+      summary: Add a product image
+      description: Attach an image by src URL or base64 attachment, with position.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductImageInput'
+      responses:
+        '201':
+          description: Image added.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductImage'
+components:
+  schemas:
+    ProductImageInput:
+      type: object
+      properties:
+        src:
+          type: string
+          format: uri
+          description: URL of the image to import.
+        attachment:
+          type: string
+          description: Base64-encoded image data (alternative to src).
+        filename:
+          type: string
+        position:
+          type: integer
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        src:
+          type: string
+          format: uri
+        position:
+          type: integer
+        alt:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    AuthenticationToken:
+      type: apiKey
+      in: header
+      name: Authentication
+      description: 'OAuth 2.0 access token obtained via the authorization-code flow, sent as "Authentication: bearer {access_token}". A descriptive User-Agent header is also required on every request.'
