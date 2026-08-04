@@ -1,0 +1,36 @@
+{
+  "provider": "tiendanube",
+  "sources": [
+    "tiendanube-categories-api-openapi.yml",
+    "tiendanube-coupons-api-openapi.yml",
+    "tiendanube-customers-api-openapi.yml",
+    "tiendanube-fulfillment-orders-api-openapi.yml",
+    "tiendanube-orders-api-openapi.yml",
+    "tiendanube-payment-providers-api-openapi.yml",
+    "tiendanube-product-images-api-openapi.yml",
+    "tiendanube-product-variants-api-openapi.yml",
+    "tiendanube-products-api-openapi.yml",
+    "tiendanube-scripts-api-openapi.yml",
+    "tiendanube-shipping-carriers-api-openapi.yml",
+    "tiendanube-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "tiendanube-categories-api-openapi.yml",
+    "tiendanube-coupons-api-openapi.yml",
+    "tiendanube-customers-api-openapi.yml",
+    "tiendanube-fulfillment-orders-api-openapi.yml",
+    "tiendanube-orders-api-openapi.yml",
+    "tiendanube-payment-providers-api-openapi.yml",
+    "tiendanube-product-images-api-openapi.yml",
+    "tiendanube-product-variants-api-openapi.yml",
+    "tiendanube-products-api-openapi.yml",
+    "tiendanube-scripts-api-openapi.yml",
+    "tiendanube-shipping-carriers-api-openapi.yml",
+    "tiendanube-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
