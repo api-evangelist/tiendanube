@@ -1,0 +1,513 @@
+{
+  "item": [
+    {
+      "id": "2ae18bb7-7f29-4726-8be6-ae1039e712dd",
+      "name": "Orders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef683331-6e80-4e2f-8386-07d5cfead7d7",
+          "name": "List orders",
+          "request": {
+            "name": "List orders",
+            "description": {},
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "payment_status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at_min",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6916622-5604-48b4-89c0-f7a0c6723c59",
+              "name": "A list of orders.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "payment_status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at_min",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8126,\n    \"number\": 1816,\n    \"token\": \"string\",\n    \"status\": \"closed\",\n    \"payment_status\": \"refunded\",\n    \"shipping_status\": \"fulfilled\",\n    \"currency\": \"string\",\n    \"total\": \"string\",\n    \"subtotal\": \"string\",\n    \"customer\": {\n      \"id\": 5900,\n      \"name\": \"string\",\n      \"email\": \"xcFPtJue@aecIIE.dcm\",\n      \"phone\": \"string\",\n      \"identification\": \"string\",\n      \"total_spent\": \"string\",\n      \"total_spent_currency\": \"string\",\n      \"addresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"number\": \"string\",\n          \"floor\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"country\": \"string\",\n          \"zipcode\": \"string\",\n          \"phone\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"number\": \"string\",\n          \"floor\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"country\": \"string\",\n          \"zipcode\": \"string\",\n          \"phone\": \"string\"\n        }\n      ],\n      \"default_address\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"created_at\": \"1957-03-19T18:16:25.788Z\"\n    },\n    \"products\": [\n      {\n        \"product_id\": 4057,\n        \"variant_id\": 1993,\n        \"name\": \"string\",\n        \"price\": \"string\",\n        \"quantity\": 1310,\n        \"sku\": \"string\"\n      },\n      {\n        \"product_id\": 4217,\n        \"variant_id\": 2141,\n        \"name\": \"string\",\n        \"price\": \"string\",\n        \"quantity\": 4511,\n        \"sku\": \"string\"\n      }\n    ],\n    \"shipping_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"billing_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"1997-03-17T13:20:15.844Z\"\n  },\n  {\n    \"id\": 4203,\n    \"number\": 441,\n    \"token\": \"string\",\n    \"status\": \"open\",\n    \"payment_status\": \"paid\",\n    \"shipping_status\": \"fulfilled\",\n    \"currency\": \"string\",\n    \"total\": \"string\",\n    \"subtotal\": \"string\",\n    \"customer\": {\n      \"id\": 3199,\n      \"name\": \"string\",\n      \"email\": \"NMUsu@YTaKY.ahl\",\n      \"phone\": \"string\",\n      \"identification\": \"string\",\n      \"total_spent\": \"string\",\n      \"total_spent_currency\": \"string\",\n      \"addresses\": [\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"number\": \"string\",\n          \"floor\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"country\": \"string\",\n          \"zipcode\": \"string\",\n          \"phone\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"address\": \"string\",\n          \"number\": \"string\",\n          \"floor\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"province\": \"string\",\n          \"country\": \"string\",\n          \"zipcode\": \"string\",\n          \"phone\": \"string\"\n        }\n      ],\n      \"default_address\": {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      \"created_at\": \"1971-10-31T22:23:08.561Z\"\n    },\n    \"products\": [\n      {\n        \"product_id\": 3198,\n        \"variant_id\": 2578,\n        \"name\": \"string\",\n        \"price\": \"string\",\n        \"quantity\": 6326,\n        \"sku\": \"string\"\n      },\n      {\n        \"product_id\": 1861,\n        \"variant_id\": 6611,\n        \"name\": \"string\",\n        \"price\": \"string\",\n        \"quantity\": 7524,\n        \"sku\": \"string\"\n      }\n    ],\n    \"shipping_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"billing_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"2002-08-14T10:22:30.583Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08275804-7518-4458-b9f9-3602588e9d80",
+          "name": "Get an order",
+          "request": {
+            "name": "Get an order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "19d620f2-b223-4e0d-b6bc-86609043cdbb",
+              "name": "The order.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8916,\n  \"number\": 796,\n  \"token\": \"string\",\n  \"status\": \"cancelled\",\n  \"payment_status\": \"pending\",\n  \"shipping_status\": \"fulfilled\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"subtotal\": \"string\",\n  \"customer\": {\n    \"id\": 7878,\n    \"name\": \"string\",\n    \"email\": \"LeYagFT5NN7GZk@NQzPVOwahAvOMUodFePd.dlx\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"total_spent\": \"string\",\n    \"total_spent_currency\": \"string\",\n    \"addresses\": [\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      }\n    ],\n    \"default_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"1964-01-17T08:52:49.874Z\"\n  },\n  \"products\": [\n    {\n      \"product_id\": 2234,\n      \"variant_id\": 1869,\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"quantity\": 9810,\n      \"sku\": \"string\"\n    },\n    {\n      \"product_id\": 746,\n      \"variant_id\": 9491,\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"quantity\": 1109,\n      \"sku\": \"string\"\n    }\n  ],\n  \"shipping_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"billing_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"created_at\": \"1986-03-11T23:38:04.111Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5712c9fd-533b-492a-a6f1-5ee901de276e",
+          "name": "Close an order",
+          "request": {
+            "name": "Close an order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "close"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c8b6433f-3f3d-4ad3-9d5a-8c1969e5cc4b",
+              "name": "Order closed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "close"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8916,\n  \"number\": 796,\n  \"token\": \"string\",\n  \"status\": \"cancelled\",\n  \"payment_status\": \"pending\",\n  \"shipping_status\": \"fulfilled\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"subtotal\": \"string\",\n  \"customer\": {\n    \"id\": 7878,\n    \"name\": \"string\",\n    \"email\": \"LeYagFT5NN7GZk@NQzPVOwahAvOMUodFePd.dlx\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"total_spent\": \"string\",\n    \"total_spent_currency\": \"string\",\n    \"addresses\": [\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      }\n    ],\n    \"default_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"1964-01-17T08:52:49.874Z\"\n  },\n  \"products\": [\n    {\n      \"product_id\": 2234,\n      \"variant_id\": 1869,\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"quantity\": 9810,\n      \"sku\": \"string\"\n    },\n    {\n      \"product_id\": 746,\n      \"variant_id\": 9491,\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"quantity\": 1109,\n      \"sku\": \"string\"\n    }\n  ],\n  \"shipping_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"billing_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"created_at\": \"1986-03-11T23:38:04.111Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "28d6752e-2d4f-4f68-9ee0-f30337409a92",
+          "name": "Cancel an order",
+          "request": {
+            "name": "Cancel an order",
+            "description": {},
+            "url": {
+              "path": [
+                "orders",
+                ":id",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6caaba1a-cd2a-4673-b53a-f086ca5ea5c8",
+              "name": "Order cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":id",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8916,\n  \"number\": 796,\n  \"token\": \"string\",\n  \"status\": \"cancelled\",\n  \"payment_status\": \"pending\",\n  \"shipping_status\": \"fulfilled\",\n  \"currency\": \"string\",\n  \"total\": \"string\",\n  \"subtotal\": \"string\",\n  \"customer\": {\n    \"id\": 7878,\n    \"name\": \"string\",\n    \"email\": \"LeYagFT5NN7GZk@NQzPVOwahAvOMUodFePd.dlx\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"total_spent\": \"string\",\n    \"total_spent_currency\": \"string\",\n    \"addresses\": [\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      }\n    ],\n    \"default_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"1964-01-17T08:52:49.874Z\"\n  },\n  \"products\": [\n    {\n      \"product_id\": 2234,\n      \"variant_id\": 1869,\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"quantity\": 9810,\n      \"sku\": \"string\"\n    },\n    {\n      \"product_id\": 746,\n      \"variant_id\": 9491,\n      \"name\": \"string\",\n      \"price\": \"string\",\n      \"quantity\": 1109,\n      \"sku\": \"string\"\n    }\n  ],\n  \"shipping_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"billing_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"created_at\": \"1986-03-11T23:38:04.111Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Numeric ID of the store the app is operating on.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/v1/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fc7f926c-20ae-4f2a-8484-1c9f598a697a",
+    "name": "Tiendanube / Nuvemshop Categories Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.\n\nContact Support:\n Name: Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

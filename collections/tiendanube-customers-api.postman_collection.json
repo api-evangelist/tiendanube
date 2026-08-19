@@ -1,0 +1,391 @@
+{
+  "item": [
+    {
+      "id": "37a2a3a8-4685-4660-bc2e-4ac82d4c1901",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "64f8872d-b37a-4cb4-b604-3cf9d1ec67f0",
+          "name": "List customers",
+          "request": {
+            "name": "List customers",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20368409-eb4c-46e5-9be9-e694c51c2669",
+              "name": "A list of customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 959,\n    \"name\": \"string\",\n    \"email\": \"PNM8oEtBokir@iqnJEq.aydh\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"total_spent\": \"string\",\n    \"total_spent_currency\": \"string\",\n    \"addresses\": [\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      }\n    ],\n    \"default_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"1974-05-01T00:11:30.495Z\"\n  },\n  {\n    \"id\": 3443,\n    \"name\": \"string\",\n    \"email\": \"lc4MuCNJBy7v6@mQXIuRMcWylxDRaqzTQnmvtzQLN.fy\",\n    \"phone\": \"string\",\n    \"identification\": \"string\",\n    \"total_spent\": \"string\",\n    \"total_spent_currency\": \"string\",\n    \"addresses\": [\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"address\": \"string\",\n        \"number\": \"string\",\n        \"floor\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"province\": \"string\",\n        \"country\": \"string\",\n        \"zipcode\": \"string\",\n        \"phone\": \"string\"\n      }\n    ],\n    \"default_address\": {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    \"created_at\": \"1971-09-19T18:39:23.545Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "478a20ef-7046-4a5e-a866-417afa430c31",
+          "name": "Create a customer",
+          "request": {
+            "name": "Create a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"identification\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b02f9401-0fe2-4013-8ab0-1b4d3738bfd9",
+              "name": "Customer created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"phone\": \"<string>\",\n  \"identification\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8044,\n  \"name\": \"string\",\n  \"email\": \"DqWVfRc1jWNxKrb@aQtXNXrUNbUreBGSZtNogYVrwsfKIrXoH.ki\",\n  \"phone\": \"string\",\n  \"identification\": \"string\",\n  \"total_spent\": \"string\",\n  \"total_spent_currency\": \"string\",\n  \"addresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    }\n  ],\n  \"default_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"created_at\": \"1998-04-28T05:10:16.473Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee58f5ef-5de0-46b0-ace1-48fa9af2c423",
+          "name": "Get a customer",
+          "request": {
+            "name": "Get a customer",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a485f369-7d67-403d-be66-a614a07b1a19",
+              "name": "The customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8044,\n  \"name\": \"string\",\n  \"email\": \"DqWVfRc1jWNxKrb@aQtXNXrUNbUreBGSZtNogYVrwsfKIrXoH.ki\",\n  \"phone\": \"string\",\n  \"identification\": \"string\",\n  \"total_spent\": \"string\",\n  \"total_spent_currency\": \"string\",\n  \"addresses\": [\n    {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"address\": \"string\",\n      \"number\": \"string\",\n      \"floor\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"province\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"phone\": \"string\"\n    }\n  ],\n  \"default_address\": {\n    \"name\": \"string\",\n    \"address\": \"string\",\n    \"number\": \"string\",\n    \"floor\": \"string\",\n    \"locality\": \"string\",\n    \"city\": \"string\",\n    \"province\": \"string\",\n    \"country\": \"string\",\n    \"zipcode\": \"string\",\n    \"phone\": \"string\"\n  },\n  \"created_at\": \"1998-04-28T05:10:16.473Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Numeric ID of the store the app is operating on.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/v1/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d177b5af-ae3d-49b5-a193-9a0bbe327656",
+    "name": "Tiendanube / Nuvemshop Categories Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.\n\nContact Support:\n Name: Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

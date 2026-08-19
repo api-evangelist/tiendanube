@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "7b51b6f3-3660-4d34-a310-be5fdd7766b3",
+      "name": "Shipping Carriers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ff1bbcc-8cce-4eae-8064-5d31bcc2a8a2",
+          "name": "List shipping carriers",
+          "request": {
+            "name": "List shipping carriers",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping_carriers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d00dd8d6-cfda-446a-a2a8-2f794f817c4d",
+              "name": "A list of shipping carriers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping_carriers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8440,\n    \"name\": \"string\",\n    \"callback_url\": \"http://TAwzBKXGpikXsXhMZsKVLLEsbbuVkwpY.sazpECGfBybfzn8Dfg6jmnlSt\",\n    \"types\": \"ship,pickup\",\n    \"active\": false,\n    \"options\": [\n      {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"additional_days\": 2538\n      },\n      {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"additional_days\": 8092\n      }\n    ]\n  },\n  {\n    \"id\": 3110,\n    \"name\": \"string\",\n    \"callback_url\": \"http://VhalFpacfv.hkisQPtypUTzJihkZlxaltT18OCcoevf9mRVShkjxQK,pqLeF\",\n    \"types\": \"ship,pickup\",\n    \"active\": true,\n    \"options\": [\n      {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"additional_days\": 98\n      },\n      {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"additional_days\": 3267\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f289919-a601-44fe-a020-0b1f328c1949",
+          "name": "Register a shipping carrier",
+          "request": {
+            "name": "Register a shipping carrier",
+            "description": {},
+            "url": {
+              "path": [
+                "shipping_carriers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"types\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"options\": [\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"additional_days\": \"<integer>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"additional_days\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c6ab09a5-e972-4ebe-8256-1e6c9236dba8",
+              "name": "Shipping carrier registered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shipping_carriers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"types\": \"ship,pickup\",\n  \"active\": \"<boolean>\",\n  \"options\": [\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"additional_days\": \"<integer>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"additional_days\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"callback_url\": \"<uri>\",\n  \"types\": \"ship,pickup\",\n  \"active\": \"<boolean>\",\n  \"options\": [\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"additional_days\": \"<integer>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"name\": \"<string>\",\n      \"additional_days\": \"<integer>\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Numeric ID of the store the app is operating on.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/v1/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "554c65a5-7b1d-431a-8ef4-ba08d8309128",
+    "name": "Tiendanube / Nuvemshop Categories Shipping Carriers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.\n\nContact Support:\n Name: Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

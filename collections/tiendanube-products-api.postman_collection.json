@@ -1,0 +1,714 @@
+{
+  "item": [
+    {
+      "id": "19c3dfe4-d257-4c4a-9f8c-4a57c7f94cca",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72f94240-910c-4960-beb0-a222984b6574",
+          "name": "List products",
+          "request": {
+            "name": "List products",
+            "description": {
+              "content": "Returns a paginated list of products in the store's catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "30"
+                },
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Full-text search across product names and SKUs."
+                },
+                {
+                  "disabled": false,
+                  "key": "category_id",
+                  "value": "<integer>",
+                  "description": "Filter products belonging to a category."
+                },
+                {
+                  "disabled": false,
+                  "key": "published",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "updated_at_min",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d231de5a-01f2-4f4a-acdf-5649f899a95e",
+              "name": "A list of products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "30"
+                    },
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "published",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "updated_at_min",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Total number of products matching the query.",
+                  "key": "x-total-count",
+                  "value": "4137"
+                },
+                {
+                  "disabled": false,
+                  "description": "RFC 5988 pagination links (rel=\"next\", rel=\"prev\").",
+                  "key": "Link",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3753,\n    \"name\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"handle\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"brand\": \"string\",\n    \"published\": false,\n    \"free_shipping\": false,\n    \"categories\": [\n      {\n        \"id\": 572,\n        \"name\": {\n          \"key_0\": \"string\"\n        },\n        \"description\": {\n          \"key_0\": \"string\"\n        },\n        \"handle\": {\n          \"key_0\": \"string\"\n        },\n        \"parent\": 9400,\n        \"subcategories\": [\n          8102,\n          5280\n        ],\n        \"created_at\": \"1966-04-12T09:18:32.562Z\"\n      },\n      {\n        \"id\": 4800,\n        \"name\": {\n          \"key_0\": \"string\"\n        },\n        \"description\": {\n          \"key_0\": \"string\"\n        },\n        \"handle\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\",\n          \"key_4\": \"string\"\n        },\n        \"parent\": 9050,\n        \"subcategories\": [\n          4499,\n          6884\n        ],\n        \"created_at\": \"2017-09-22T22:26:09.342Z\"\n      }\n    ],\n    \"variants\": [\n      {\n        \"id\": 3769,\n        \"product_id\": 7528,\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock_management\": true,\n        \"stock\": 9399,\n        \"weight\": \"string\",\n        \"width\": \"string\",\n        \"height\": \"string\",\n        \"depth\": \"string\",\n        \"sku\": \"string\",\n        \"barcode\": \"string\",\n        \"values\": [\n          {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\",\n            \"key_3\": \"string\",\n            \"key_4\": \"string\"\n          },\n          {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": 7705,\n        \"product_id\": 9097,\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock_management\": true,\n        \"stock\": 4129,\n        \"weight\": \"string\",\n        \"width\": \"string\",\n        \"height\": \"string\",\n        \"depth\": \"string\",\n        \"sku\": \"string\",\n        \"barcode\": \"string\",\n        \"values\": [\n          {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          {\n            \"key_0\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"images\": [\n      {\n        \"id\": 5404,\n        \"product_id\": 1459,\n        \"src\": \"http://kvCUxbHkqhqAknKaKGsOdUUKV.jaxyFlpv46QwzfENFOiKPXBlCf3rUrrrP2h5vftoB7OmBoemOwqmC+xqocZH5\",\n        \"position\": 8248,\n        \"alt\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 7261,\n        \"product_id\": 6299,\n        \"src\": \"http://dMPrSCZxxnLODZBww.bji4cvVcH6ePEK0z9bNcMJyfjjx,UzlkeW78Zcv\",\n        \"position\": 9956,\n        \"alt\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"created_at\": \"1949-10-25T13:23:12.705Z\",\n    \"updated_at\": \"2002-02-21T15:50:47.465Z\"\n  },\n  {\n    \"id\": 7502,\n    \"name\": {\n      \"key_0\": \"string\"\n    },\n    \"description\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"handle\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"brand\": \"string\",\n    \"published\": true,\n    \"free_shipping\": false,\n    \"categories\": [\n      {\n        \"id\": 9493,\n        \"name\": {\n          \"key_0\": \"string\"\n        },\n        \"description\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"handle\": {\n          \"key_0\": \"string\"\n        },\n        \"parent\": 2476,\n        \"subcategories\": [\n          1807,\n          1426\n        ],\n        \"created_at\": \"1950-02-02T07:50:48.585Z\"\n      },\n      {\n        \"id\": 80,\n        \"name\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"description\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"handle\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"parent\": 4120,\n        \"subcategories\": [\n          3556,\n          7762\n        ],\n        \"created_at\": \"2001-01-26T11:46:39.424Z\"\n      }\n    ],\n    \"variants\": [\n      {\n        \"id\": 8895,\n        \"product_id\": 3232,\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock_management\": false,\n        \"stock\": 5426,\n        \"weight\": \"string\",\n        \"width\": \"string\",\n        \"height\": \"string\",\n        \"depth\": \"string\",\n        \"sku\": \"string\",\n        \"barcode\": \"string\",\n        \"values\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": 9885,\n        \"product_id\": 2906,\n        \"price\": \"string\",\n        \"promotional_price\": \"string\",\n        \"stock_management\": false,\n        \"stock\": 2617,\n        \"weight\": \"string\",\n        \"width\": \"string\",\n        \"height\": \"string\",\n        \"depth\": \"string\",\n        \"sku\": \"string\",\n        \"barcode\": \"string\",\n        \"values\": [\n          {\n            \"key_0\": \"string\"\n          },\n          {\n            \"key_0\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"images\": [\n      {\n        \"id\": 9917,\n        \"product_id\": 2566,\n        \"src\": \"http://cM.prl\",\n        \"position\": 897,\n        \"alt\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"id\": 3701,\n        \"product_id\": 2273,\n        \"src\": \"https://NJrnoM.cycqSoCgkecpc6Gd2jtU2Zee,hnAOiH.x-\",\n        \"position\": 12,\n        \"alt\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"created_at\": \"1948-12-10T00:24:03.982Z\",\n    \"updated_at\": \"2000-09-02T23:23:33.572Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0763b452-f10e-44fd-be1f-6f37d5232e40",
+          "name": "Create a product",
+          "request": {
+            "name": "Create a product",
+            "description": {},
+            "url": {
+              "path": [
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\"\n  },\n  \"brand\": \"<string>\",\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "552639c2-bf51-4c11-ad6b-30a6d8b12b8d",
+              "name": "Product created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"brand\": \"<string>\",\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8409,\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"brand\": \"string\",\n  \"published\": false,\n  \"free_shipping\": true,\n  \"categories\": [\n    {\n      \"id\": 2741,\n      \"name\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"description\": {\n        \"key_0\": \"<string>\"\n      },\n      \"handle\": {\n        \"key_0\": \"<string>\"\n      },\n      \"parent\": 4933,\n      \"subcategories\": [\n        5843,\n        9907\n      ],\n      \"created_at\": \"1987-09-23T19:33:21.827Z\"\n    },\n    {\n      \"id\": 6591,\n      \"name\": {\n        \"key_0\": \"<string>\"\n      },\n      \"description\": {\n        \"key_0\": \"<string>\"\n      },\n      \"handle\": {\n        \"key_0\": \"<string>\"\n      },\n      \"parent\": 6572,\n      \"subcategories\": [\n        9402,\n        6588\n      ],\n      \"created_at\": \"1946-10-04T11:00:38.378Z\"\n    }\n  ],\n  \"variants\": [\n    {\n      \"id\": 7043,\n      \"product_id\": 4150,\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock_management\": true,\n      \"stock\": 9361,\n      \"weight\": \"<string>\",\n      \"width\": \"<string>\",\n      \"height\": \"<string>\",\n      \"depth\": \"<string>\",\n      \"sku\": \"string\",\n      \"barcode\": \"string\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": 2975,\n      \"product_id\": 8637,\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock_management\": false,\n      \"stock\": 610,\n      \"weight\": \"<string>\",\n      \"width\": \"<string>\",\n      \"height\": \"<string>\",\n      \"depth\": \"<string>\",\n      \"sku\": \"string\",\n      \"barcode\": \"string\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"id\": 513,\n      \"product_id\": 1504,\n      \"src\": \"https://vIBC.jrSmqH0xG\",\n      \"position\": 2979,\n      \"alt\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": 4668,\n      \"product_id\": 1021,\n      \"src\": \"http://bGSkLfSYvUNKoFiADxglcWtCqyVq.nxzsZRlJyd+3gj1oeZifXnRdtPwrnEe54xvecCJOrALvm4R9\",\n      \"position\": 7928,\n      \"alt\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"2008-12-21T05:11:12.785Z\",\n  \"updated_at\": \"1953-09-06T08:42:26.246Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15e6655f-4cfe-432e-a2bf-2e1851edca49",
+          "name": "Get a product",
+          "request": {
+            "name": "Get a product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24d126a5-bd09-476e-b8b3-941723ac6e3c",
+              "name": "The product.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8409,\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"brand\": \"string\",\n  \"published\": false,\n  \"free_shipping\": true,\n  \"categories\": [\n    {\n      \"id\": 2741,\n      \"name\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"description\": {\n        \"key_0\": \"<string>\"\n      },\n      \"handle\": {\n        \"key_0\": \"<string>\"\n      },\n      \"parent\": 4933,\n      \"subcategories\": [\n        5843,\n        9907\n      ],\n      \"created_at\": \"1987-09-23T19:33:21.827Z\"\n    },\n    {\n      \"id\": 6591,\n      \"name\": {\n        \"key_0\": \"<string>\"\n      },\n      \"description\": {\n        \"key_0\": \"<string>\"\n      },\n      \"handle\": {\n        \"key_0\": \"<string>\"\n      },\n      \"parent\": 6572,\n      \"subcategories\": [\n        9402,\n        6588\n      ],\n      \"created_at\": \"1946-10-04T11:00:38.378Z\"\n    }\n  ],\n  \"variants\": [\n    {\n      \"id\": 7043,\n      \"product_id\": 4150,\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock_management\": true,\n      \"stock\": 9361,\n      \"weight\": \"<string>\",\n      \"width\": \"<string>\",\n      \"height\": \"<string>\",\n      \"depth\": \"<string>\",\n      \"sku\": \"string\",\n      \"barcode\": \"string\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": 2975,\n      \"product_id\": 8637,\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock_management\": false,\n      \"stock\": 610,\n      \"weight\": \"<string>\",\n      \"width\": \"<string>\",\n      \"height\": \"<string>\",\n      \"depth\": \"<string>\",\n      \"sku\": \"string\",\n      \"barcode\": \"string\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"id\": 513,\n      \"product_id\": 1504,\n      \"src\": \"https://vIBC.jrSmqH0xG\",\n      \"position\": 2979,\n      \"alt\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": 4668,\n      \"product_id\": 1021,\n      \"src\": \"http://bGSkLfSYvUNKoFiADxglcWtCqyVq.nxzsZRlJyd+3gj1oeZifXnRdtPwrnEe54xvecCJOrALvm4R9\",\n      \"position\": 7928,\n      \"alt\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"2008-12-21T05:11:12.785Z\",\n  \"updated_at\": \"1953-09-06T08:42:26.246Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "683d59cd-06e1-49ca-ab49-d45cd5b7fac8",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1321,\n  \"message\": \"string\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85f4caea-d923-4a05-86fa-dc51677b2927",
+          "name": "Update a product",
+          "request": {
+            "name": "Update a product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"brand\": \"<string>\",\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b5f7aca-c2b5-48db-b9a1-f91e3e361ab4",
+              "name": "Product updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"brand\": \"<string>\",\n  \"published\": \"<boolean>\",\n  \"free_shipping\": \"<boolean>\",\n  \"categories\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"variants\": [\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock\": \"<integer>\",\n      \"weight\": \"<string>\",\n      \"sku\": \"<string>\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8409,\n  \"name\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"description\": {\n    \"key_0\": \"<string>\"\n  },\n  \"handle\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"brand\": \"string\",\n  \"published\": false,\n  \"free_shipping\": true,\n  \"categories\": [\n    {\n      \"id\": 2741,\n      \"name\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"description\": {\n        \"key_0\": \"<string>\"\n      },\n      \"handle\": {\n        \"key_0\": \"<string>\"\n      },\n      \"parent\": 4933,\n      \"subcategories\": [\n        5843,\n        9907\n      ],\n      \"created_at\": \"1987-09-23T19:33:21.827Z\"\n    },\n    {\n      \"id\": 6591,\n      \"name\": {\n        \"key_0\": \"<string>\"\n      },\n      \"description\": {\n        \"key_0\": \"<string>\"\n      },\n      \"handle\": {\n        \"key_0\": \"<string>\"\n      },\n      \"parent\": 6572,\n      \"subcategories\": [\n        9402,\n        6588\n      ],\n      \"created_at\": \"1946-10-04T11:00:38.378Z\"\n    }\n  ],\n  \"variants\": [\n    {\n      \"id\": 7043,\n      \"product_id\": 4150,\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock_management\": true,\n      \"stock\": 9361,\n      \"weight\": \"<string>\",\n      \"width\": \"<string>\",\n      \"height\": \"<string>\",\n      \"depth\": \"<string>\",\n      \"sku\": \"string\",\n      \"barcode\": \"string\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": 2975,\n      \"product_id\": 8637,\n      \"price\": \"<string>\",\n      \"promotional_price\": \"<string>\",\n      \"stock_management\": false,\n      \"stock\": 610,\n      \"weight\": \"<string>\",\n      \"width\": \"<string>\",\n      \"height\": \"<string>\",\n      \"depth\": \"<string>\",\n      \"sku\": \"string\",\n      \"barcode\": \"string\",\n      \"values\": [\n        {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\",\n          \"key_3\": \"<string>\"\n        },\n        {\n          \"key_0\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"images\": [\n    {\n      \"id\": 513,\n      \"product_id\": 1504,\n      \"src\": \"https://vIBC.jrSmqH0xG\",\n      \"position\": 2979,\n      \"alt\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"id\": 4668,\n      \"product_id\": 1021,\n      \"src\": \"http://bGSkLfSYvUNKoFiADxglcWtCqyVq.nxzsZRlJyd+3gj1oeZifXnRdtPwrnEe54xvecCJOrALvm4R9\",\n      \"position\": 7928,\n      \"alt\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"created_at\": \"2008-12-21T05:11:12.785Z\",\n  \"updated_at\": \"1953-09-06T08:42:26.246Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb4d866b-8fe6-4b95-ad47-3282d1ad0858",
+          "name": "Delete a product",
+          "request": {
+            "name": "Delete a product",
+            "description": {},
+            "url": {
+              "path": [
+                "products",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3bdb151e-f5f6-4af7-b08d-94c440afc4a1",
+              "name": "Product deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Numeric ID of the store the app is operating on.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/v1/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8f2f4e9c-e7b6-4d54-a489-0e14cc79000f",
+    "name": "Tiendanube / Nuvemshop Categories Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.\n\nContact Support:\n Name: Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}

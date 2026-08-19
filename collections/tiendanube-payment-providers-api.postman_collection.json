@@ -1,0 +1,257 @@
+{
+  "item": [
+    {
+      "id": "de0bc199-6900-4180-bf14-83e61c821d75",
+      "name": "Payment Providers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cdd654ac-abdc-4c3c-98f9-1f6edb811ce0",
+          "name": "List payment providers",
+          "request": {
+            "name": "List payment providers",
+            "description": {},
+            "url": {
+              "path": [
+                "payment_providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e69dcfcc-0c2d-47b8-a275-72d27363798f",
+              "name": "A list of payment providers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"public_name\": \"string\",\n    \"description\": \"string\",\n    \"logo_urls\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"checkout_js_url\": \"http://htuJTmoDcLSygDUHDiDFgVcbpcqK.mrjDYFfwkacVDcV1b042SWOB+hUxR.ojCJvG-kCrSYLpvRmnwQAKRZwUxGXBUtKZ\",\n    \"supported_currencies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supported_payment_methods\": [\n      {\n        \"payment_method_type\": \"string\",\n        \"payment_methods\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"payment_method_type\": \"string\",\n        \"payment_methods\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"public_name\": \"string\",\n    \"description\": \"string\",\n    \"logo_urls\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"checkout_js_url\": \"http://NbYmdzexIYMlc.shjHR74EOgg-qB\",\n    \"supported_currencies\": [\n      \"string\",\n      \"string\"\n    ],\n    \"supported_payment_methods\": [\n      {\n        \"payment_method_type\": \"string\",\n        \"payment_methods\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"payment_method_type\": \"string\",\n        \"payment_methods\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e8f7aeb-abaf-4ee5-af71-a26c6f4d60da",
+          "name": "Register a payment provider",
+          "request": {
+            "name": "Register a payment provider",
+            "description": {},
+            "url": {
+              "path": [
+                "payment_providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Numeric ID of the store the app is operating on.",
+                  "type": "any",
+                  "value": "{{store_id}}",
+                  "key": "store_id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"public_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"logo_urls\": {\n    \"key_0\": \"<string>\"\n  },\n  \"checkout_js_url\": \"<uri>\",\n  \"supported_currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supported_payment_methods\": [\n    {\n      \"payment_method_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payment_method_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2303757e-f0d4-4d84-b02d-08b46418d0e8",
+              "name": "Payment provider registered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Numeric ID of the store the app is operating on.",
+                      "type": "any",
+                      "value": "{{store_id}}",
+                      "key": "store_id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authentication",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"public_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"logo_urls\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"checkout_js_url\": \"<uri>\",\n  \"supported_currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supported_payment_methods\": [\n    {\n      \"payment_method_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payment_method_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"public_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"logo_urls\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"checkout_js_url\": \"<uri>\",\n  \"supported_currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"supported_payment_methods\": [\n    {\n      \"payment_method_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"payment_method_type\": \"<string>\",\n      \"payment_methods\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Numeric ID of the store the app is operating on.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "0",
+      "key": "store_id"
+    },
+    {
+      "type": "string",
+      "value": "https://api.tiendanube.com/v1/{{store_id}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authentication"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1440ab2-ec01-483c-b2d5-7fd733381ab3",
+    "name": "Tiendanube / Nuvemshop Categories Payment Providers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.\n\nContact Support:\n Name: Tiendanube Developers",
+      "type": "text/plain"
+    }
+  }
+}
