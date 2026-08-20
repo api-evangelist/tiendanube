@@ -23,6 +23,13 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/tiendanube.png
 tags:
+- E-Commerce
+- Retail
+- Latin America
+- Storefront
+- Product
+- Order
+tags_raw:
 - E-commerce
 - Retail
 - Latin America
@@ -183,6 +190,8 @@ apis:
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/v1/{store_id}
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -327,6 +336,8 @@ apis:
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/v1/{store_id}
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -435,6 +446,8 @@ apis:
   humanURL: https://tiendanube.github.io/api-documentation/resources/product
   baseURL: https://api.tiendanube.com/v1/{store_id}
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
