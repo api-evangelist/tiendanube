@@ -491,6 +491,9 @@ apis:
   - type: APIReference
     url: https://tiendanube.github.io/api-documentation/resources/shipping_carrier
 common:
+- type: CapabilityMap
+  url: capabilities/tiendanube-capability-edges.yml
+  name: Tiendanube Business Capability Map
 - type: AgenticAccess
   url: agentic-access/tiendanube-agentic-access.yml
 - type: VulnerabilityDisclosure
