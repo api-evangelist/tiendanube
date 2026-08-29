@@ -8,6 +8,18 @@ description: Tiendanube (branded Nuvemshop in Brazil) is the leading e-commerce
   variants, categories, orders, customers, coupons, webhooks, scripts,
   fulfillment orders, and payment/shipping providers - using OAuth 2.0 and a
   per-store authentication token.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
