@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiendanube / Nuvemshop Categories Webhooks API
+  title: Tiendanube / Nuvemshop Webhooks API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
   termsOfService: https://www.tiendanube.com/terminos-de-uso
   contact:
@@ -71,6 +71,13 @@ paths:
         '200':
           description: Webhook deleted.
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
     WebhookInput:
       type: object
@@ -98,13 +105,6 @@ components:
         created_at:
           type: string
           format: date-time
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     AuthenticationToken:
       type: apiKey

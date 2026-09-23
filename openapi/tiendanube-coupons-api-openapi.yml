@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiendanube / Nuvemshop Categories Coupons API
+  title: Tiendanube / Nuvemshop Coupons API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
   termsOfService: https://www.tiendanube.com/terminos-de-uso
   contact:
@@ -71,37 +71,6 @@ paths:
           description: Coupon deleted.
 components:
   schemas:
-    Coupon:
-      type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        type:
-          type: string
-          enum:
-          - percentage
-          - absolute
-          - shipping
-        value:
-          $ref: '#/components/schemas/Money'
-        valid:
-          type: boolean
-        max_uses:
-          type: integer
-          nullable: true
-        used:
-          type: integer
-        min_price:
-          $ref: '#/components/schemas/Money'
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-          nullable: true
     CouponInput:
       type: object
       required:
@@ -128,6 +97,39 @@ components:
           format: date
         end_date:
           type: string
+          format: date
+    Coupon:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        type:
+          type: string
+          enum:
+          - percentage
+          - absolute
+          - shipping
+        value:
+          $ref: '#/components/schemas/Money'
+        valid:
+          type: boolean
+        max_uses:
+          type:
+          - integer
+          - 'null'
+        used:
+          type: integer
+        min_price:
+          $ref: '#/components/schemas/Money'
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type:
+          - string
+          - 'null'
           format: date
     Money:
       type: string

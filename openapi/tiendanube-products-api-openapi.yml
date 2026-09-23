@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiendanube / Nuvemshop Categories Products API
+  title: Tiendanube / Nuvemshop Products API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
   termsOfService: https://www.tiendanube.com/terminos-de-uso
   contact:
@@ -134,116 +134,7 @@ paths:
         '200':
           description: Product deleted.
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        handle:
-          $ref: '#/components/schemas/LocalizedString'
-        parent:
-          type: integer
-          nullable: true
-        subcategories:
-          type: array
-          items:
-            type: integer
-        created_at:
-          type: string
-          format: date-time
-    VariantInput:
-      type: object
-      properties:
-        price:
-          $ref: '#/components/schemas/Money'
-        promotional_price:
-          $ref: '#/components/schemas/Money'
-        stock:
-          type: integer
-        weight:
-          $ref: '#/components/schemas/Money'
-        sku:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-    LocalizedString:
-      type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-    Variant:
-      type: object
-      properties:
-        id:
-          type: integer
-        product_id:
-          type: integer
-        price:
-          $ref: '#/components/schemas/Money'
-        promotional_price:
-          $ref: '#/components/schemas/Money'
-        stock_management:
-          type: boolean
-        stock:
-          type: integer
-          nullable: true
-        weight:
-          $ref: '#/components/schemas/Money'
-        width:
-          $ref: '#/components/schemas/Money'
-        height:
-          $ref: '#/components/schemas/Money'
-        depth:
-          $ref: '#/components/schemas/Money'
-        sku:
-          type: string
-          nullable: true
-        barcode:
-          type: string
-          nullable: true
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     ProductInput:
       type: object
       required:
@@ -267,6 +158,48 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VariantInput'
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock_management:
+          type: boolean
+        stock:
+          type:
+          - integer
+          - 'null'
+        weight:
+          $ref: '#/components/schemas/Money'
+        width:
+          $ref: '#/components/schemas/Money'
+        height:
+          $ref: '#/components/schemas/Money'
+        depth:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type:
+          - string
+          - 'null'
+        barcode:
+          type:
+          - string
+          - 'null'
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
     ProductImage:
       type: object
       properties:
@@ -283,6 +216,57 @@ components:
           type: array
           items:
             type: string
+    VariantInput:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock:
+          type: integer
+        weight:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        handle:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type:
+          - integer
+          - 'null'
+        subcategories:
+          type: array
+          items:
+            type: integer
+        created_at:
+          type: string
+          format: date-time
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
     Product:
       type: object
       properties:
@@ -295,8 +279,9 @@ components:
         handle:
           $ref: '#/components/schemas/LocalizedString'
         brand:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         published:
           type: boolean
         free_shipping:
@@ -319,6 +304,26 @@ components:
         updated_at:
           type: string
           format: date-time
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
   responses:
     NotFound:
       description: Resource not found.

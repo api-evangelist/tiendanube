@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiendanube / Nuvemshop Categories Product Variants API
+  title: Tiendanube / Nuvemshop Product Variants API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
   termsOfService: https://www.tiendanube.com/terminos-de-uso
   contact:
@@ -112,28 +112,6 @@ paths:
           description: Variant deleted.
 components:
   schemas:
-    VariantInput:
-      type: object
-      properties:
-        price:
-          $ref: '#/components/schemas/Money'
-        promotional_price:
-          $ref: '#/components/schemas/Money'
-        stock:
-          type: integer
-        weight:
-          $ref: '#/components/schemas/Money'
-        sku:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-    LocalizedString:
-      type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
     Variant:
       type: object
       properties:
@@ -148,8 +126,9 @@ components:
         stock_management:
           type: boolean
         stock:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         weight:
           $ref: '#/components/schemas/Money'
         width:
@@ -159,11 +138,35 @@ components:
         depth:
           $ref: '#/components/schemas/Money'
         sku:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         barcode:
+          type:
+          - string
+          - 'null'
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
+    VariantInput:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock:
+          type: integer
+        weight:
+          $ref: '#/components/schemas/Money'
+        sku:
           type: string
-          nullable: true
         values:
           type: array
           items:

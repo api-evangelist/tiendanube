@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiendanube / Nuvemshop Categories Customers API
+  title: Tiendanube / Nuvemshop Customers API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
   termsOfService: https://www.tiendanube.com/terminos-de-uso
   contact:
@@ -82,64 +82,6 @@ paths:
                 $ref: '#/components/schemas/Customer'
 components:
   schemas:
-    Address:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        number:
-          type: string
-        floor:
-          type: string
-          nullable: true
-        locality:
-          type: string
-          nullable: true
-        city:
-          type: string
-        province:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
-        phone:
-          type: string
-          nullable: true
-    Customer:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-          nullable: true
-        identification:
-          type: string
-          nullable: true
-        total_spent:
-          $ref: '#/components/schemas/Money'
-        total_spent_currency:
-          type: string
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-        default_address:
-          $ref: '#/components/schemas/Address'
-        created_at:
-          type: string
-          format: date-time
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     CustomerInput:
       type: object
       required:
@@ -155,6 +97,69 @@ components:
           type: string
         identification:
           type: string
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
+    Customer:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type:
+          - string
+          - 'null'
+        identification:
+          type:
+          - string
+          - 'null'
+        total_spent:
+          $ref: '#/components/schemas/Money'
+        total_spent_currency:
+          type: string
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        default_address:
+          $ref: '#/components/schemas/Address'
+        created_at:
+          type: string
+          format: date-time
+    Address:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        number:
+          type: string
+        floor:
+          type:
+          - string
+          - 'null'
+        locality:
+          type:
+          - string
+          - 'null'
+        city:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        phone:
+          type:
+          - string
+          - 'null'
   parameters:
     Page:
       name: page

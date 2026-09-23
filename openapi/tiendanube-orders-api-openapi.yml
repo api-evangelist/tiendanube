@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Tiendanube / Nuvemshop Categories Orders API
+  title: Tiendanube / Nuvemshop Orders API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
   termsOfService: https://www.tiendanube.com/terminos-de-uso
   contact:
@@ -115,33 +115,61 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
-    Address:
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
+    Customer:
       type: object
       properties:
+        id:
+          type: integer
         name:
           type: string
-        address:
+        email:
           type: string
-        number:
-          type: string
-        floor:
-          type: string
-          nullable: true
-        locality:
-          type: string
-          nullable: true
-        city:
-          type: string
-        province:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
+          format: email
         phone:
+          type:
+          - string
+          - 'null'
+        identification:
+          type:
+          - string
+          - 'null'
+        total_spent:
+          $ref: '#/components/schemas/Money'
+        total_spent_currency:
           type: string
-          nullable: true
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        default_address:
+          $ref: '#/components/schemas/Address'
+        created_at:
+          type: string
+          format: date-time
     Order:
       type: object
       properties:
@@ -205,60 +233,38 @@ components:
         quantity:
           type: integer
         sku:
-          type: string
-          nullable: true
-    Customer:
+          type:
+          - string
+          - 'null'
+    Address:
       type: object
       properties:
-        id:
-          type: integer
         name:
           type: string
-        email:
+        address:
           type: string
-          format: email
+        number:
+          type: string
+        floor:
+          type:
+          - string
+          - 'null'
+        locality:
+          type:
+          - string
+          - 'null'
+        city:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
         phone:
-          type: string
-          nullable: true
-        identification:
-          type: string
-          nullable: true
-        total_spent:
-          $ref: '#/components/schemas/Money'
-        total_spent_currency:
-          type: string
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-        default_address:
-          $ref: '#/components/schemas/Address'
-        created_at:
-          type: string
-          format: date-time
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
-  parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
+          type:
+          - string
+          - 'null'
   securitySchemes:
     AuthenticationToken:
       type: apiKey

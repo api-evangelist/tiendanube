@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Tiendanube / Nuvemshop Categories API
   description: Representative OpenAPI description of the Tiendanube (Nuvemshop) REST API for app partners. All requests are scoped to a single store via the {store_id} path segment, authenticated with an OAuth 2.0 access token sent in the Authentication header, and MUST include a descriptive User-Agent header identifying the app. The Brazil deployment mirrors this API at https://api.nuvemshop.com.br/v1/{store_id}.
@@ -103,6 +103,47 @@ paths:
         '200':
           description: Category deleted.
 components:
+  schemas:
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        handle:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type:
+          - integer
+          - 'null'
+        subcategories:
+          type: array
+          items:
+            type: integer
+        created_at:
+          type: string
+          format: date-time
+    CategoryInput:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type:
+          - integer
+          - 'null'
   parameters:
     Page:
       name: page
@@ -123,45 +164,6 @@ components:
       required: true
       schema:
         type: integer
-  schemas:
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        handle:
-          $ref: '#/components/schemas/LocalizedString'
-        parent:
-          type: integer
-          nullable: true
-        subcategories:
-          type: array
-          items:
-            type: integer
-        created_at:
-          type: string
-          format: date-time
-    LocalizedString:
-      type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
-    CategoryInput:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        parent:
-          type: integer
-          nullable: true
   securitySchemes:
     AuthenticationToken:
       type: apiKey
