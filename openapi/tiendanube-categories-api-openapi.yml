@@ -104,11 +104,19 @@ paths:
           description: Category deleted.
 components:
   schemas:
-    LocalizedString:
+    CategoryInput:
       type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
+      required:
+      - name
+      properties:
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type:
+          - integer
+          - 'null'
     Category:
       type: object
       properties:
@@ -131,19 +139,11 @@ components:
         created_at:
           type: string
           format: date-time
-    CategoryInput:
+    LocalizedString:
       type: object
-      required:
-      - name
-      properties:
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        parent:
-          type:
-          - integer
-          - 'null'
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
   parameters:
     Page:
       name: page

@@ -82,24 +82,6 @@ paths:
                 $ref: '#/components/schemas/Customer'
 components:
   schemas:
-    CustomerInput:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        identification:
-          type: string
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     Customer:
       type: object
       properties:
@@ -160,6 +142,24 @@ components:
           type:
           - string
           - 'null'
+    CustomerInput:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        identification:
+          type: string
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
   parameters:
     Page:
       name: page

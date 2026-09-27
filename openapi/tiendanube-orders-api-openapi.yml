@@ -115,30 +115,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     Customer:
       type: object
       properties:
@@ -170,6 +147,35 @@ components:
         created_at:
           type: string
           format: date-time
+    Address:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        number:
+          type: string
+        floor:
+          type:
+          - string
+          - 'null'
+        locality:
+          type:
+          - string
+          - 'null'
+        city:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        phone:
+          type:
+          - string
+          - 'null'
     Order:
       type: object
       properties:
@@ -236,35 +242,29 @@ components:
           type:
           - string
           - 'null'
-    Address:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        number:
-          type: string
-        floor:
-          type:
-          - string
-          - 'null'
-        locality:
-          type:
-          - string
-          - 'null'
-        city:
-          type: string
-        province:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
-        phone:
-          type:
-          - string
-          - 'null'
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     AuthenticationToken:
       type: apiKey

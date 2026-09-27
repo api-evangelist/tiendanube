@@ -149,6 +149,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LocalizedString'
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
     LocalizedString:
       type: object
       description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
@@ -171,9 +174,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LocalizedString'
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
   parameters:
     Id:
       name: id

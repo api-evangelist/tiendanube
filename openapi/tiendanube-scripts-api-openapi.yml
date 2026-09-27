@@ -60,26 +60,6 @@ paths:
                 $ref: '#/components/schemas/Script'
 components:
   schemas:
-    ScriptInput:
-      type: object
-      required:
-      - src
-      - event
-      - where
-      properties:
-        src:
-          type: string
-          format: uri
-        event:
-          type: string
-          enum:
-          - onload
-        where:
-          type: string
-          enum:
-          - store
-          - checkout
-          - all
     Script:
       type: object
       properties:
@@ -101,6 +81,26 @@ components:
         created_at:
           type: string
           format: date-time
+    ScriptInput:
+      type: object
+      required:
+      - src
+      - event
+      - where
+      properties:
+        src:
+          type: string
+          format: uri
+        event:
+          type: string
+          enum:
+          - onload
+        where:
+          type: string
+          enum:
+          - store
+          - checkout
+          - all
   securitySchemes:
     AuthenticationToken:
       type: apiKey

@@ -158,115 +158,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/VariantInput'
-    Variant:
-      type: object
-      properties:
-        id:
-          type: integer
-        product_id:
-          type: integer
-        price:
-          $ref: '#/components/schemas/Money'
-        promotional_price:
-          $ref: '#/components/schemas/Money'
-        stock_management:
-          type: boolean
-        stock:
-          type:
-          - integer
-          - 'null'
-        weight:
-          $ref: '#/components/schemas/Money'
-        width:
-          $ref: '#/components/schemas/Money'
-        height:
-          $ref: '#/components/schemas/Money'
-        depth:
-          $ref: '#/components/schemas/Money'
-        sku:
-          type:
-          - string
-          - 'null'
-        barcode:
-          type:
-          - string
-          - 'null'
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-    LocalizedString:
-      type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
-    ProductImage:
-      type: object
-      properties:
-        id:
-          type: integer
-        product_id:
-          type: integer
-        src:
-          type: string
-          format: uri
-        position:
-          type: integer
-        alt:
-          type: array
-          items:
-            type: string
-    VariantInput:
-      type: object
-      properties:
-        price:
-          $ref: '#/components/schemas/Money'
-        promotional_price:
-          $ref: '#/components/schemas/Money'
-        stock:
-          type: integer
-        weight:
-          $ref: '#/components/schemas/Money'
-        sku:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
-    Category:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        handle:
-          $ref: '#/components/schemas/LocalizedString'
-        parent:
-          type:
-          - integer
-          - 'null'
-        subcategories:
-          type: array
-          items:
-            type: integer
-        created_at:
-          type: string
-          format: date-time
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     Product:
       type: object
       properties:
@@ -304,6 +195,115 @@ components:
         updated_at:
           type: string
           format: date-time
+    Variant:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock_management:
+          type: boolean
+        stock:
+          type:
+          - integer
+          - 'null'
+        weight:
+          $ref: '#/components/schemas/Money'
+        width:
+          $ref: '#/components/schemas/Money'
+        height:
+          $ref: '#/components/schemas/Money'
+        depth:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type:
+          - string
+          - 'null'
+        barcode:
+          type:
+          - string
+          - 'null'
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    ProductImage:
+      type: object
+      properties:
+        id:
+          type: integer
+        product_id:
+          type: integer
+        src:
+          type: string
+          format: uri
+        position:
+          type: integer
+        alt:
+          type: array
+          items:
+            type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        handle:
+          $ref: '#/components/schemas/LocalizedString'
+        parent:
+          type:
+          - integer
+          - 'null'
+        subcategories:
+          type: array
+          items:
+            type: integer
+        created_at:
+          type: string
+          format: date-time
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
+    VariantInput:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock:
+          type: integer
+        weight:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
   parameters:
     Page:
       name: page
