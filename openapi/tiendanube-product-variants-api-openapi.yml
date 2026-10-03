@@ -112,6 +112,23 @@ paths:
           description: Variant deleted.
 components:
   schemas:
+    VariantInput:
+      type: object
+      properties:
+        price:
+          $ref: '#/components/schemas/Money'
+        promotional_price:
+          $ref: '#/components/schemas/Money'
+        stock:
+          type: integer
+        weight:
+          $ref: '#/components/schemas/Money'
+        sku:
+          type: string
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocalizedString'
     Variant:
       type: object
       properties:
@@ -157,23 +174,6 @@ components:
       description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
       additionalProperties:
         type: string
-    VariantInput:
-      type: object
-      properties:
-        price:
-          $ref: '#/components/schemas/Money'
-        promotional_price:
-          $ref: '#/components/schemas/Money'
-        stock:
-          type: integer
-        weight:
-          $ref: '#/components/schemas/Money'
-        sku:
-          type: string
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocalizedString'
   parameters:
     Id:
       name: id

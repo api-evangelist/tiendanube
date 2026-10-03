@@ -67,20 +67,6 @@ paths:
                 $ref: '#/components/schemas/ProductImage'
 components:
   schemas:
-    ProductImageInput:
-      type: object
-      properties:
-        src:
-          type: string
-          format: uri
-          description: URL of the image to import.
-        attachment:
-          type: string
-          description: Base64-encoded image data (alternative to src).
-        filename:
-          type: string
-        position:
-          type: integer
     ProductImage:
       type: object
       properties:
@@ -97,6 +83,20 @@ components:
           type: array
           items:
             type: string
+    ProductImageInput:
+      type: object
+      properties:
+        src:
+          type: string
+          format: uri
+          description: URL of the image to import.
+        attachment:
+          type: string
+          description: Base64-encoded image data (alternative to src).
+        filename:
+          type: string
+        position:
+          type: integer
   securitySchemes:
     AuthenticationToken:
       type: apiKey
