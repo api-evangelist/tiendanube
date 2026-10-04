@@ -81,22 +81,30 @@ paths:
               schema:
                 $ref: '#/components/schemas/Customer'
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
-    CustomerInput:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        identification:
-          type: string
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
     Customer:
       type: object
       properties:
@@ -128,9 +136,6 @@ components:
         created_at:
           type: string
           format: date-time
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     Address:
       type: object
       properties:
@@ -160,26 +165,21 @@ components:
           type:
           - string
           - 'null'
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
-    PerPage:
-      name: per_page
-      in: query
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        default: 1
+    CustomerInput:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        identification:
+          type: string
   securitySchemes:
     AuthenticationToken:
       type: apiKey

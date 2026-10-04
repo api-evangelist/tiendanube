@@ -112,6 +112,14 @@ paths:
           description: Variant deleted.
 components:
   schemas:
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
     VariantInput:
       type: object
       properties:
@@ -166,14 +174,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LocalizedString'
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
-    LocalizedString:
-      type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
   parameters:
     Id:
       name: id

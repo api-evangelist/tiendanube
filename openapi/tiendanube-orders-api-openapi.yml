@@ -116,12 +116,12 @@ paths:
                 $ref: '#/components/schemas/Order'
 components:
   parameters:
-    Id:
-      name: id
-      in: path
-      required: true
+    Page:
+      name: page
+      in: query
       schema:
         type: integer
+        default: 1
     PerPage:
       name: per_page
       in: query
@@ -129,13 +129,16 @@ components:
         type: integer
         default: 30
         maximum: 200
-    Page:
-      name: page
-      in: query
+    Id:
+      name: id
+      in: path
+      required: true
       schema:
         type: integer
-        default: 1
   schemas:
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
     Customer:
       type: object
       properties:
@@ -167,9 +170,6 @@ components:
         created_at:
           type: string
           format: date-time
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     Order:
       type: object
       properties:

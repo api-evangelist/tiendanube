@@ -71,6 +71,36 @@ paths:
           description: Coupon deleted.
 components:
   schemas:
+    CouponInput:
+      type: object
+      required:
+      - code
+      - type
+      - value
+      properties:
+        code:
+          type: string
+        type:
+          type: string
+          enum:
+          - percentage
+          - absolute
+          - shipping
+        value:
+          $ref: '#/components/schemas/Money'
+        max_uses:
+          type: integer
+        min_price:
+          $ref: '#/components/schemas/Money'
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
     Coupon:
       type: object
       properties:
@@ -103,36 +133,6 @@ components:
           type:
           - string
           - 'null'
-          format: date
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
-    CouponInput:
-      type: object
-      required:
-      - code
-      - type
-      - value
-      properties:
-        code:
-          type: string
-        type:
-          type: string
-          enum:
-          - percentage
-          - absolute
-          - shipping
-        value:
-          $ref: '#/components/schemas/Money'
-        max_uses:
-          type: integer
-        min_price:
-          $ref: '#/components/schemas/Money'
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
           format: date
   parameters:
     Id:
