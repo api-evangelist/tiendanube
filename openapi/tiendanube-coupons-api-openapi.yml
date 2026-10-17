@@ -70,7 +70,17 @@ paths:
         '200':
           description: Coupon deleted.
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
+    Money:
+      type: string
+      description: Decimal amount serialized as a string, e.g. "199.90".
     CouponInput:
       type: object
       required:
@@ -98,9 +108,6 @@ components:
         end_date:
           type: string
           format: date
-    Money:
-      type: string
-      description: Decimal amount serialized as a string, e.g. "199.90".
     Coupon:
       type: object
       properties:
@@ -134,13 +141,6 @@ components:
           - string
           - 'null'
           format: date
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     AuthenticationToken:
       type: apiKey

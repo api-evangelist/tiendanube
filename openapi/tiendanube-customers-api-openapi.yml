@@ -82,6 +82,12 @@ paths:
                 $ref: '#/components/schemas/Customer'
 components:
   parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
     Page:
       name: page
       in: query
@@ -95,13 +101,36 @@ components:
         type: integer
         default: 30
         maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
+    Address:
+      type: object
+      properties:
+        name:
+          type: string
+        address:
+          type: string
+        number:
+          type: string
+        floor:
+          type:
+          - string
+          - 'null'
+        locality:
+          type:
+          - string
+          - 'null'
+        city:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+        zipcode:
+          type: string
+        phone:
+          type:
+          - string
+          - 'null'
     Money:
       type: string
       description: Decimal amount serialized as a string, e.g. "199.90".
@@ -136,35 +165,6 @@ components:
         created_at:
           type: string
           format: date-time
-    Address:
-      type: object
-      properties:
-        name:
-          type: string
-        address:
-          type: string
-        number:
-          type: string
-        floor:
-          type:
-          - string
-          - 'null'
-        locality:
-          type:
-          - string
-          - 'null'
-        city:
-          type: string
-        province:
-          type: string
-        country:
-          type: string
-        zipcode:
-          type: string
-        phone:
-          type:
-          - string
-          - 'null'
     CustomerInput:
       type: object
       required:

@@ -103,6 +103,26 @@ paths:
         '200':
           description: Category deleted.
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      schema:
+        type: integer
+        default: 30
+        maximum: 200
   schemas:
     CategoryInput:
       type: object
@@ -117,6 +137,11 @@ components:
           type:
           - integer
           - 'null'
+    LocalizedString:
+      type: object
+      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
+      additionalProperties:
+        type: string
     Category:
       type: object
       properties:
@@ -139,31 +164,6 @@ components:
         created_at:
           type: string
           format: date-time
-    LocalizedString:
-      type: object
-      description: A map of locale code to translated string, e.g. keys "es" and "pt" mapping to localized values.
-      additionalProperties:
-        type: string
-  parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      schema:
-        type: integer
-        default: 30
-        maximum: 200
-    Id:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     AuthenticationToken:
       type: apiKey
